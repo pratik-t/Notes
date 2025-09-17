@@ -1,0 +1,1095 @@
+\documentclass[12pt, letterpaper]{report}
+\usepackage{amsfonts, amsmath, amssymb, mathtools, amsthm, mathrsfs}
+\usepackage{cancel}
+\usepackage{physics}
+\usepackage[most]{tcolorbox}
+\usepackage{xfrac}
+\usepackage{lmodern}
+\usepackage{parskip}
+\usepackage{cleveref}
+\usepackage[letterpaper, textheight= 8.5in, headsep=.5in, voffset= 0.3in]{geometry}
+
+\usepackage[twoside]{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\rightmark}
+\lhead{\thepage}
+\setlength{\headheight}{14.49998pt}
+
+\newcommand{\T}[2]{(p+\varepsilon)U^{#1} U^{#2}+ pg^{#1#2}}
+\newcommand{\christ}[3]{\frac{1}{2}g^{#1\sigma}\left[\partial_{#2}g_{#3\sigma}+\partial_{#3}g_{#2\sigma}-\partial_{\sigma}g_{#2#3}\right]}
+
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+\vbadness=10000
+
+\begin{document}
+
+\tableofcontents
+
+\chapter{Stellar Structure Equations}
+
+\emph{Using the [-,+,+,+] convention, $\eta^{\mu\nu}$, in units of h=G=c=1.}
+
+\emph{Reference: Misner, Thorne, Wheeler- Gravitation}
+
+
+\section{Line Element}
+
+The most general, spherically symmetric line element is given by the Schwarzschild metric: 
+\begin{equation}
+    \tcboxmath{ds^2= -\mathrm{e}^{2\Phi}\ dt^2+ \mathrm{e}^{2\Lambda}\ dr^2+r^2\ d\theta^2+r^2\sin^2\theta\ d\phi^2}\label{eq1.1}
+\end{equation}
+
+\[
+g_{\mu\nu}= \begin{bmatrix}
+    -\mathrm{e}^{2\Phi} & 0 & 0 & 0 \\
+    0 & \mathrm{e}^{2\Lambda} & 0 & 0 \\
+    0 & 0 & r^2 & 0 \\
+    0 & 0 & 0 & r^2\sin^2\theta \\
+\end{bmatrix}\ \  
+g^{\mu\nu}= \begin{bmatrix}
+    -\mathrm{e}^{-2\Phi} & 0 & 0 & 0 \\
+    0 & \mathrm{e}^{-2\Lambda} & 0 & 0 \\
+    0 & 0 & \frac{1}{r^2} & 0 \\
+    0 & 0 & 0 & \frac{1}{r^2\sin^2\theta} \\
+\end{bmatrix}
+\]
+
+where $\Phi$ and $\Lambda$ are functions of $r$ alone for the static case.
+
+\section{Christoffel Symbols}
+
+$$\Gamma ^{\lambda }_{\mu \nu }=\frac{1}{2} g^{\lambda \rho }\left(\frac{\partial g_{\nu \rho }}{\partial \mu }-\frac{\partial g_{\mu \nu }}{\partial \rho }+\frac{\partial g_{\rho \mu }}{\partial \nu }\right)$$
+
+The non-trivial Christoffel symbols corresponding to the Schwarzschild metric are: 
+
+\begin{align*}
+    \Gamma ^{t}_{tr}= \Gamma ^{t}_{rt} &= \Phi ' &
+    \Gamma ^r_{tt} &= e^{2 \Phi-2 \Lambda} \Phi '\\
+    \Gamma ^r_{rr} &= \Lambda '&
+    \Gamma ^r_{\theta \theta} &= -re^{-2 \Lambda}\\
+    \Gamma ^r_{\phi\phi} &= -re^{-2 \Lambda} \sin ^2\theta &
+    \Gamma ^{\theta}_{r\theta}=\Gamma ^{\theta}_{\theta r}=\Gamma ^{\phi }_{r\phi }= \Gamma ^{\phi }_{\phi r} &= \frac{1}{r}\\
+    \Gamma ^{\theta }_{\phi\phi }&= -\sin \theta \cos \theta &
+    \Gamma ^{\phi }_{\theta\phi }= \Gamma ^{\phi }_{\phi \theta} &= \cot \theta\\
+\end{align*}
+
+\section{Ricci Tensor}
+
+\emph{The Riemann Tensor convention is different from that in Weinberg. Weinberg's convention has a negative sign with respect to this convention. Consequently, the Einstein field equation has a negative sign as well in Weinberg.}
+
+Riemann Curvature Tensor: 
+$$R^{\lambda }{}_{\alpha \beta \gamma }=\Gamma ^{\lambda }{}_{\alpha \gamma ,\beta }- \Gamma ^{\lambda }{}_{\alpha \beta ,\gamma }+\Gamma ^{\rho }{}_{\alpha \gamma } \Gamma ^{\lambda }{}_{\beta \rho }- \Gamma ^{\rho }{}_{\alpha \beta } \Gamma ^{\lambda }{}_{\gamma \rho }$$
+
+Ricci Tensor: 
+$$R_{\alpha \gamma }=R^{\lambda }{}_{\alpha \lambda \gamma }$$
+
+The non-trivial components are: 
+\begin{align*}
+    \text{R}_{tt} &= e^{2 \Phi-2 \Lambda} \left(\Phi ''+\Phi '^2-  \Lambda '\Phi ' +\frac{2\Phi '}{r} \right)\\
+    \text{R}_{rr}&= e^{-2 \Phi+2 \Lambda}\text{R}_{tt}+ \frac{2}{r}\left(\Lambda'+ \Phi '\right)\\
+    \text{R}_{\theta \theta }&=e^{-2 \Lambda } \left(r \Lambda '+e^{2 \Lambda }-r \Phi '-1\right)\\
+    \text{R}_{\phi \phi } &= \text{R}_{\theta\theta }\sin ^2\theta
+\end{align*}
+
+\section{Einstein Tensor}
+
+Einstein tensor:
+$$G_{\mu \nu }=R_{\mu \nu }-\frac{R g_{\mu \nu }}{2}$$
+
+Einstein Field Equations: 
+$$G_{\mu \nu }=8\pi \text{G}T_{\mu \nu }$$
+
+The non-trivial components are: 
+
+\begin{align*}
+    \text{G}_{tt} &= \frac{e^{2 \Phi-2 \Lambda } \left(2 r \Lambda '+e^{2 \Lambda}-1\right)}{r^2}\\
+    \text{G}_{rr} &= -\frac{e^{2 \Lambda}-2 r \Phi '-1}{r^2}\\
+    \text{G}_{\theta \theta } &= -r e^{-2 \Lambda } \left(\Lambda ' \left(r \Phi '+1\right)-r \Phi ''-r \Phi '^2-\Phi '\right)\\
+    \text{G}_{\phi \phi } &= \text{G}_{\theta \theta }\sin ^2\theta 
+\end{align*}
+
+
+\section{Perfect Fluid} \label{sec perfect fluid}
+
+For a perfect fluid, the energy momentum tensor is given by: 
+\begin{equation}
+    \tcboxmath{T^{\mu\nu}= \T{\mu}{\nu}}\label{eq1.2}
+\end{equation}
+
+with $p$ being the pressure and $\varepsilon$ the energy density. 
+
+Note that since the four velocity should be normalised, $U^\mu U_\mu = -1$, and since $g^{\mu\nu}_{\ \ \ ;\nu}= 0$ then: 
+\begin{align*}
+    [U^\mu U_\mu]_{;\nu} &= 0\\
+    U^\mu_{\ ;\nu}U_\mu + U_{\mu;\nu}U^\mu &= 0\\
+    U^\mu_{\ ;\nu}U_\mu + [g_{\alpha\mu}U^\alpha]_{;\nu}[g^{\beta\mu}U_\beta] &= 0\\
+    U^\mu_{\ ;\nu}U_\mu + U^\alpha_{\ ;\nu}U_\alpha &= 0
+\end{align*}
+\begin{equation} 
+    \tcboxmath{U^\mu_{\ ;\nu}U_\mu= U^\mu U_{\mu;\nu}= 0} \label{eq1.3}
+\end{equation}
+
+Conservation of energy momentum implies $T^{\mu\nu}{}_{;\nu}=0$. 
+\begin{align*}
+    0 &= \left[\T{\mu}{\nu}\right]_{;\nu}\\
+    0 &= (p+\varepsilon)_{;\nu}U^\mu U^\nu+ (p+\varepsilon)[U^\mu_{\ ;\nu} U^\nu + U^\mu U^\nu_{\ ;\nu}] + p_{;\nu}g^{\mu\nu}
+\end{align*}
+
+We want to extract the conservation of energy law and the conservation of momentum law. For this, first multiply  $T^{\mu\nu}_{\ \ \ ;\nu}=0$ by $U_\mu$:
+\begin{align*}
+    0 &= -(p+\varepsilon)_{;\nu} U^\nu+ (p+\varepsilon)[ U^\nu U^\mu_{\ ;\nu}U_\mu - U^\nu_{\ ;\nu}] + p_{;\nu}U^\nu\\
+    0 &= -\varepsilon_{;\nu} U^\nu- (p+\varepsilon)U^\nu_{\ ;\nu}
+\end{align*}
+
+where from \cref{eq1.3}, $U^\mu_{\ ;\nu}U_\mu= 0$.
+\begin{equation}
+    \tcboxmath{U^\nu \nabla_\nu\varepsilon= -(p+\varepsilon)\nabla_\nu U^\nu} \label{eq1.4}
+\end{equation}
+
+Where $\nabla$ represents covariant differentaition $(\nabla_\nu A^\mu= \partial_\nu A^\mu + \Gamma^{\mu}_{\sigma \nu}A^\sigma)$. The projection on spacelike components gives the momentum conservation law. This is done by contracting  $T^{\mu\nu}_{\ \ \ ;\nu}=0$ with $h_{\mu\alpha}= g_{\mu\alpha}+U_{\mu}U_\alpha$
+\begin{align*}
+    0 &= (p+\varepsilon)_{;\nu}[g_{\mu\alpha}U^\mu U^\nu+U_{\mu}U_\alpha U^\mu U^\nu]\\ 
+    &\ \ +(p+\varepsilon)[U^\mu_{\ ;\nu} U^\nu g_{\mu\alpha} + U^\mu U^\nu_{\ ;\nu}g_{\mu\alpha}] \\
+    &\ \ +(p+\varepsilon)[U^\mu_{\ ;\nu} U^\nu U_{\mu}U_\alpha + U^\mu U^\nu_{\ ;\nu}U_{\mu}U_\alpha] \\ 
+    &\ \ + p_{;\nu}g^{\mu\nu}[g_{\mu\alpha}+U_{\mu}U_\alpha]
+\end{align*}
+\begin{align*}
+    0 &= (p+\varepsilon)_{;\nu}[U_\alpha U^\nu-U_\alpha U^\nu]\\ 
+    &\ \ +(p+\varepsilon)[U^\mu_{\ ;\nu} U^\nu g_{\mu\alpha} + U_\alpha U^\nu_{\ ;\nu}] \\
+    &\ \ +(p+\varepsilon)[0\cdot U^\nu U_\alpha - U^\nu_{\ ;\nu}U_\alpha] \\ 
+    &\ \ + p_{;\nu}[\delta^\nu_\alpha+U^{\nu}U_\alpha]
+\end{align*}
+\begin{align*}
+    0 &= (p+\varepsilon)U_{\alpha;\nu} U^\nu + p_{;\alpha}+p_{;\nu}U^{\nu}U_\alpha
+\end{align*}
+Replacing $\alpha$ by $\mu$, 
+\begin{equation}
+    \tcboxmath{(p+\varepsilon)U^\nu\nabla_\nu U_\mu= -\nabla_\mu p- U_\mu U^\nu \nabla_\nu p}\label{eq1.5}
+\end{equation}
+
+This is the \emph{relativistic Euler equation}. Expanding the covariant derivative, we can also write this as: 
+\begin{equation}
+    (p+\varepsilon)U^\nu\partial_\nu U_\mu -(p+\varepsilon)U^\nu \Gamma^{\alpha}_{\sigma\nu}U_\alpha = -\partial_\mu p- U_\mu U^\nu \partial_\nu p \label{eq1.6}
+\end{equation}
+
+Since we're considering a static star, the spatial components of the four-velocity are 0. The temporal component is given by the normalisation condition: 
+\begin{eqnarray*}
+    g_{\mu\nu} U^\mu U^\nu &=& -1 \\
+    -\mathrm{e}^{2\Phi}U^t U^t &=& -1\\ 
+    (U^t)^2 &=& \mathrm{e}^{-2\Phi}\\
+    U^t &=& \mathrm{e}^{-\Phi}
+\end{eqnarray*}
+
+Hence the four velocity for a static fluid in the Schwarzschild line element is: $$U^\mu= [\mathrm{e}^{-\Phi}, 0, 0, 0]$$ $$U_\mu= [-\mathrm{e}^{\Phi}, 0, 0, 0]$$
+
+And the energy momentum tensor is: 
+
+\[
+T_{\mu\nu}= \begin{bmatrix}
+    \mathrm{e}^{2\Phi}\varepsilon & 0 & 0 & 0 \\
+    0 & \mathrm{e}^{2\Lambda}p & 0 & 0 \\
+    0 & 0 & r^2p & 0 \\
+    0 & 0 & 0 & r^2p\sin^2\theta
+\end{bmatrix}
+\]
+
+Thus, applying \cref{eq1.6} to a static star with the above four velocity, for the free index $\mu=r$, we get: 
+\begin{align*}
+    (p+\varepsilon)U^\nu\partial_\nu U_r -(p+\varepsilon)U^\nu \Gamma^{\alpha}_{\sigma\nu}U_\alpha &= -\partial_r p- U_r U^\nu \partial_\nu p\\
+    -(p+\varepsilon)U^t \Gamma^{t}_{\sigma t}U_t &= -\partial_r p
+\end{align*}
+
+From the non-trivial Christoffel symbols list we see that the above is non zero only for $\sigma= r$ and $\Gamma^{t}_{r t}= \Phi'$. Then: $(p+\varepsilon)\Phi' = -p'$
+
+\begin{equation}
+    \tcboxmath{\frac{dp}{dr}= -(p+\varepsilon)\frac{d\Phi}{dr}} \label{eq1.7}
+\end{equation}
+
+\section{Far Field Solution}
+
+The Schwarzschild metric must reduce to the flat spacetime metric far away from the spherically symmetric source. Since at that point, the energy momentum tensor is identically 0, the Einstein field equations are equivalent to $G_{\mu\nu}= 0 \Rightarrow R_{\mu\nu}= 0$.
+
+From the Ricci tensor components, we thus get: 
+\begin{align*}
+    \text{R}_{rr}&= e^{-2 \Phi+2 \Lambda}\text{R}_{tt}+ \frac{2}{r}\left(\Lambda'+ \Phi '\right)\\
+    0 &= 0+ \frac{2}{r}\left(\Lambda'+ \Phi '\right)\\
+    \Phi' &= -\Lambda'\\
+    \Rightarrow \Phi &= -\Lambda + k
+\end{align*}
+
+Where $k$ is some constant. However, if we plug $\Phi$ in the Schwarzschild line element, the $dt^2$ component becomes $-e^{2k}e^{-2\Lambda}dt^2$. We can now make a coordinate transformation $dt' \rightarrow e^k dt$, which will take away the constant factor, and thus in general we can set $k=0$ to get ($R_*$ is the radius of the star): $$\Phi= -\Lambda\ \ \{r>R_*\}$$
+
+Now setting $R_{\theta \theta }= 0$ we get: 
+\begin{align*}
+    \text{R}_{\theta \theta }&=e^{-2 \Lambda } \left(r \Lambda '+e^{2 \Lambda }-r \Phi '-1\right)\\
+    0 &= e^{2\Phi}(-2r\partial_r\Phi) + 1-e^{2\Phi}\\
+    1 &= e^{2\Phi}+2re^{2\Phi}\partial_r\Phi\\
+    1 &= \partial_r(re^{2\Phi})\\
+    e^{2\Phi} &= 1+\frac{k}{r}\\
+    \Phi &= \frac{1}{2}\ln\left[{1+\frac{k}{r}}\right]\\
+    \Phi' &= \frac{-k}{2r^2}\qty[1+\frac{k}{r}]^{-1}
+\end{align*}
+
+The Schwarzschild line element thus becomes: 
+\begin{align*}
+    ds^2 &= -\mathrm{e}^{2\Phi}\ dt^2+ \mathrm{e}^{-2\Phi}\ dr^2+r^2\ d\theta^2+r^2\sin^2\theta\ d\phi^2\\
+    ds^2 &= -\left[1+\frac{k}{r}\right]\ dt^2+ \left[1+\frac{k}{r}\right]^{-1}\ dr^2+r^2\ d\Omega^2
+\end{align*}
+
+In the Newtonian limit, particle velocities are slow such that $\frac{dx}{d\tau}\ll \frac{dt}{d\tau}$
+
+The geodesic equation then reduces to: 
+$$\ddot{x}^\mu + \Gamma^{\mu}_{\alpha\beta}\dot{x}^\alpha\dot{x}^\beta=0\rightarrow \ddot{x}^\mu + \Gamma^{\mu}_{tt}(\dot{x}^t)^2= 0 $$
+
+For $\mu= r$, $\Gamma ^r_{tt} = e^{2 \Phi-2 \Lambda} \Phi '$:
+\begin{align*}
+    0 &= \frac{\dd^2 r}{\dd\tau^2}+ e^{4\Phi} \Phi'\left(\frac{\dd t}{\dd\tau}\right)^2 \\
+    \frac{\dd^2 r}{\dd\tau^2}&= -\left(1+\frac{k}{r}\right)^2\cdot \frac{-k}{2r^2}\qty(1+\frac{k}{r})^{-1}\\
+    \frac{\dd^2 r}{\dd\tau^2}&= \frac{k}{2r^2}\qty(1+\frac{k}{r})\\
+    \frac{\dd^2 r}{\dd\tau^2}&\approx \frac{k}{2r^2}\ \qty{r\rightarrow \infty}
+\end{align*}
+
+But in the Newtonian limit, $\frac{\dd^2 r}{\dd\tau^2}= \frac{-GM}{r^2}$. Thus, 
+$$\frac{k}{2r^2}= \frac{-GM}{r^2}\Rightarrow k=-2GM $$
+
+Thus the exterior solution to the Schwarzschild metric is ($G= 1$): 
+\begin{equation}
+        \tcboxmath{\begin{aligned}
+        \dd s^2 &= -\qty(1-\frac{2M}{r})\ \dd t^2+ \qty(1-\frac{2M}{r})^{-1}\ \dd r^2+r^2\ \dd\Omega^2\\
+        \Phi&= -\Lambda= \frac{1}{2}\ln\qty({1-\frac{2M}{r}});\ \ \qty{r>R_*}
+        \end{aligned}} \label{eq1.8} 
+\end{equation}
+
+\subsection{Birkhoff's Theorem}
+
+\newtheorem*{theorem}{Statement}
+\begin{theorem}
+    The exterior vacuum region of \emph{any} spherically symmetric body is described by the Schwarzschild metric. This is true even when the source is time varying, as long as it preserves spherical symmetry as in the case of radial oscillations.     
+\end{theorem}
+\renewcommand\qedsymbol{$\blacksquare$}
+\begin{proof}
+If we take $\Phi$ and $\Lambda$ to be functions of $t$ as well as $r$ in the original line element, then the Ricci tensor components change. Some of these are: 
+\begin{align*}
+    \text{R}_{tr} &= \frac{2}{r}\partial_t \Lambda\\
+    \text{R}_{\theta \theta }&=e^{-2 \Lambda } \left(r \partial_r\Lambda+e^{2 \Lambda }-r \partial_r\Phi-1\right)
+\end{align*}
+
+Setting the first equation to 0, we get $\partial_t\Lambda= 0$. This means that $\Lambda$ is time independent, $\Lambda(t,r)= \Lambda(r)$. 
+
+From the second equation, we see that the $\text{R}_{\theta \theta }$ term is the same as before. This means that the analysis of this term will be exactly the same as before. But if we take a time derivative of $\text{R}_{\theta \theta }$ then: 
+\begin{align*}
+    \partial_t\text{R}_{\theta \theta }&=0\\
+    e^{-2\Lambda}\qty(-r\partial_t\partial_r\Phi)&= 0\\
+    \partial_t\partial_r\Phi &= 0
+\end{align*}
+
+This means that $\Phi$ can be separated into a purely temporal and purely radial part: $\Phi(t,r)= \Phi_t(t)+\Phi_r(r)$. 
+
+However, as before, the temporal part of the line element becomes $-e^{2\Phi_t(t)}e^{-2\Phi_r(r)}dt^2$ and we can make a coordinate transformation $dt' \rightarrow e^{\Phi_t(t)} dt$, and we recover the original Schwarzschild form. 
+\end{proof}
+
+\section{Interior Solution}
+
+The temporal component gives: 
+\begin{align*}
+    G_{tt}&= 8\pi T_{tt}\\
+    \frac{e^{2 \Phi-2 \Lambda } \qty(2 r \Lambda '+e^{2 \Lambda}-1)}{r^2}&= 8\pi\mathrm{e}^{2\Phi}\varepsilon\\
+    \qty(2 r \Lambda 'e^{-2 \Lambda }-e^{-2 \Lambda }+1)&= 8\pi\varepsilon r^2\\
+    \partial_r\qty(r\qty(1-e^{2 \Lambda}))&= 8\pi\varepsilon r^2
+\end{align*}
+
+Similar to the far field solution, define $e^{-2\Lambda}= 1- \frac{2m}{r}$. Then,
+\begin{align*}
+    \partial_r\qty(2m) &= 8\pi\varepsilon r^2\\
+    \partial_r m &= 4\pi\varepsilon r^2\\
+    m(r) &= \int_0^r 4\pi r'^2 \varepsilon(r')\ \dd r'
+\end{align*}
+
+This looks like some mass, however if we were to do a proper volume integration then there would be a factor of $\sqrt{g_{rr}}$ since this term is not $1$. That means that the 'proper' mass is: 
+$$m_B(r)= \int_0^r 4\pi r'^2\varepsilon(r')e^{\Lambda(r')}\ \dd r' = \int_0^r 4\pi r'^2\varepsilon(r')\qty(1-\frac{2m(r')}{r'})^{-\frac{1}{2}}\ \dd r'$$
+
+$m_B$ is the sum of masses (rest mass energy + thermal energy + compression energy etc) of what makes up the star, and is thus called the baryonic mass. It is, in general greater than $m$. $m$ on the other hand is the mass which generates gravity, and is thus called the gravitational mass. The difference in these masses can be regarded as the gravitational potential energy. The splitting can be shown explicitly as follows: 
+$$m(r)= m_0(r)+ U(r)+ \Omega(r)$$
+
+If $\mu_0$ is the average rest mass of the baryons in a star with $n$ baryons then the total energy density $\varepsilon$ can be split into that contributing to the rest mass energy $m_0$, i.e. $\mu_0 n$ and that contributing to the internal energy $U$. i.e. $\varepsilon-\mu_0 n$. That is: 
+\begin{align*}
+    m_0(r)&= \int_0^r 4\pi r'^2 \mu_0 n\qty(1-\frac{2m(r')}{r'})^{-\frac{1}{2}}\ \dd r'\\
+    U(r)&= \int_0^r 4\pi r'^2[\varepsilon(r')-\mu_0 n]\qty(1-\frac{2m(r')}{r'})^{-\frac{1}{2}}\ \dd r'
+\end{align*}
+
+Then: 
+\begin{align*}
+    \Omega(r)&= m(r)- m_0(r)- U(r)= -\int_0^r 4\pi r'^2\varepsilon(r')\qty[\qty(1-\frac{2m(r')}{r'})^{-\frac{1}{2}}-1]\ \dd r'
+\end{align*}
+
+Where $\Omega(r)$ is the gravitational potential energy. 
+
+Now looking at the $G_{rr}$ component, 
+\begin{align*}
+    \text{G}_{rr} &= -\frac{e^{2 \Lambda }-2 r \Phi '-1}{r^2}= 8\pi T_{rr}\\
+    -8\pi e^{2\Lambda}p &= \frac{e^{2\Lambda}-2 r \Phi '(r)-1}{r^2}\\
+    \Phi '(r)&=\frac{\qty(1-\frac{2m}{r})^{-1}\qty[1+8 \pi p r^2]-1}{2 r}\\
+    \Phi'(r) &=\frac{m+4 \pi r^3p}{r (r- 2 m)}
+\end{align*}
+
+And using \cref{eq1.7} we get:
+$$p'(r) =-(p+\varepsilon)\qty(\frac{m+4 \pi r^3p}{r (r- 2 m)})$$
+
+Thus the interior stellar structure equations are the Tolman-Oppenheimer-Volkov (TOV) equations: 
+\begin{equation}
+    \tcboxmath{\begin{aligned}
+        \frac{\dd m}{\dd r} &= 4\pi r^2 \varepsilon & \Lambda&= -\frac{1}{2}\ln\qty(1-\frac{2m}{r})\\[10pt]
+        \frac{\dd \Phi}{\dd r} &=\frac{m+4 \pi r^3p}{r (r- 2 m)}\ \ \ \ \  & \frac{\dd p}{\dd r} &=-(p+\varepsilon)\frac{\dd \Phi}{\dd r}
+    \end{aligned}}\label{eq1.9}
+\end{equation}
+
+\subsection{Two Fluid TOV}
+
+When there are two perfect fluids present in the star, which interact only gravitationally, then the relativistic Euler equation and thus \cref{eq1.7} will be valid individually for both fluids. This means: 
+$$\frac{dp_1}{dr}= -(p_1+\varepsilon_1)\frac{d\Phi}{dr};\ \ \frac{dp_2}{dr}= -(p_2+\varepsilon_2)\frac{d\Phi}{dr}$$
+
+$\Phi$ is a component of the Schwarzschild metric itself and hence won't change for different fluids. 
+
+The Einstein field equations however depend on the \emph{total} energy momentum tensor, which in this case will be the sum of those of single fluids. Thus, all the previous discussion in the \emph{Internal Solution} section will follow with the changes- $p\rightarrow p_1+p_2$ and $\varepsilon\rightarrow\varepsilon_1+\varepsilon_2$. Thus: 
+\begin{align*}
+    \frac{\dd m}{\dd r} &= 4\pi r^2 (\varepsilon_1+\varepsilon_2)\ 
+    &\Rightarrow m &= m_1+m_2\\[10pt]
+    \frac{\dd m_1}{\dd r} &= 4\pi r^2 \varepsilon_1 &
+    \frac{\dd m_2}{\dd r} &= 4\pi r^2 \varepsilon_2
+\end{align*}
+
+$$\frac{\dd \Phi}{\dd r} =\frac{(m_1+m_2)+4 \pi r^3(p_1+p_2)}{r (r- 2 (m_1+m_2))}$$
+
+\chapter{Linearised Gravity}
+
+\emph{Using the [-,+,+,+] convention, $\eta^{\mu\nu}$, in units of h=G=c=1.}
+
+\emph{Reference: Michele Maggiore- Gravitational Waves Chapter 1}
+
+\section{Linearised Field Equations}
+
+\subsection{Linearised Christoffel Symbols}
+
+We'll take the perturbation of a general metric as $g_{\mu\nu}= \bar{g}_{\mu\nu}+h_{\mu\nu}$ where $\bar{g}_{\mu\nu}$ is the unperturbed metric and $h_{\mu\nu}$ is the perturbation term. Obviously, since the metric must be symmetric, $h_{\mu\nu}$ is also symmetric. The inverse metric is $g^{\mu\nu}= \bar{g}^{\mu\nu}- {h}^{\mu\nu}$ since $${g}_{\mu\nu}{g}^{\nu\lambda}= \left( \bar{g}_{\mu\nu}+ {h}_{\mu\nu} \right)\left( \bar{g}^{\nu\lambda}- {h}^{\nu\lambda} \right)= \delta_\mu^\lambda+h_\mu^{\ \lambda}-h_\mu^{\ \lambda}+\mathcal{O}(h^2) = \delta_\mu^\lambda$$
+
+The Christoffel symbol is then given as follows (taking terms upto first order in $h$): 
+\setlength{\jot}{10pt}
+\begin{align}
+    \bar{\Gamma}^{\mu}_{\ \alpha\beta}&= \frac{1}{2}\bar{g}^{\mu\sigma}\left[\partial_\alpha\bar{g}_{\beta\sigma}+\partial_{\beta}\bar{g}_{\alpha\sigma}-\partial_{\sigma}\bar{g}_{\alpha\beta}\right] \nonumber\\
+    \Gamma^{\mu}_{\ \alpha\beta}&= \frac{1}{2}\qty(\bar{g}^{\mu\sigma}-h^{\mu\sigma})\left[\partial_\alpha \qty(\bar{g}_{\beta\sigma}+h_{\beta\sigma})+\partial_{\beta}\qty(\bar{g}_{\alpha\sigma}+h_{\alpha\sigma})-\partial_{\sigma}\qty(\bar{g}_{\alpha\beta}+h_{\alpha\beta})\right] \nonumber\\
+    \Gamma^{\mu}_{\ \alpha\beta}&= \bar{\Gamma}^{\mu}_{\ \alpha\beta}+\frac{1}{2}\bar{g}^{\mu\sigma}\left[\partial_\alpha h_{\beta\sigma}+\partial_{\beta}h_{\alpha\sigma}-\partial_{\sigma}h_{\alpha\beta}\right]-\frac{1}{2}h^{\mu\sigma}\left[\partial_\alpha \bar{g}_{\beta\sigma}+\partial_{\beta}\bar{g}_{\alpha\sigma}-\partial_{\sigma}\bar{g}_{\alpha\beta}\right] \label{christ pert step1}
+\end{align}
+
+But we can write $$\ \bar{g}_{\rho\lambda}\bar{\Gamma}^{\rho}_{\alpha\beta}= \bar{g}_{\rho\lambda}\cdot\frac{1}{2}\bar{g}^{\rho\sigma}\left[\partial_\alpha \bar{g}_{\beta\sigma}+\partial_{\beta}\bar{g}_{\alpha\sigma}-\partial_{\sigma}\bar{g}_{\alpha\beta}\right]$$
+
+This gives 
+$$\ 2\bar{g}_{\rho\lambda}\bar{\Gamma}^{\rho}_{\alpha\beta}= \partial_\alpha \bar{g}_{\beta\lambda}+\partial_{\beta}\bar{g}_{\alpha\lambda}-\partial_{\lambda}\bar{g}_{\alpha\beta}$$ 
+
+Thus, replacing $\lambda$ by $\sigma$-
+
+\[
+    \frac{1}{2}h^{\mu\sigma}\left[\partial_\alpha \bar{g}_{\beta\sigma}+\partial_{\beta}\bar{g}_{\alpha\sigma}-\partial_{\sigma}\bar{g}_{\alpha\beta}\right] = \frac{1}{2}h^{\mu\sigma}\cdot 2\bar{g}_{\rho\sigma}\bar{\Gamma}^{\rho}_{\alpha\beta}= h^{\mu}_{\ \rho}\bar{\Gamma}^{\rho}_{\alpha\beta}= \bar{g}^{\mu\sigma} h_{\sigma\rho}\bar{\Gamma}^{\rho}_{\alpha\beta}
+\]
+
+Substituting in \cref{christ pert step1}, we get: 
+\setlength{\jot}{10pt}
+\begin{align} 
+    \Gamma^{\mu}_{\ \alpha\beta}&= \bar{\Gamma}^{\mu}_{\ \alpha\beta}+\frac{1}{2}\bar{g}^{\mu\sigma}\left[\partial_\alpha h_{\beta\sigma}+\partial_{\beta}h_{\alpha\sigma}-\partial_{\sigma}h_{\alpha\beta}\right]- \bar{g}^{\mu\sigma} h_{\sigma\rho}\bar{\Gamma}^{\rho}_{\alpha\beta} \nonumber\\
+    \Gamma^{\mu}_{\ \alpha\beta}&= \bar{\Gamma}^{\mu}_{\ \alpha\beta}+\frac{1}{2}\bar{g}^{\mu\sigma}\qty[\partial_\alpha h_{\beta\sigma}+\partial_{\beta}h_{\alpha\sigma}-\partial_{\sigma}h_{\alpha\beta}- 2\bar{\Gamma}^{\rho}_{\alpha\beta}h_{\sigma\rho}]\label{christ pert step2}
+\end{align}
+
+Now we can use the covariant derivative (with respect to the unperturbed metric, represented by $\bar{D}$) to simplify the expression in square brackets (using symmetry properties of the lower two indices of the Christoffel symbol, and of $h_{\mu\nu}$): 
+\setlength{\jot}{10pt}
+\begin{align*}
+    \bar{D}_{\alpha}h_{\beta\sigma} &= \partial_{\alpha} h_{\beta\sigma}- \bar{\Gamma}^{\rho}_{\alpha\beta}h_{\rho \sigma}- \cancel{\bar{\Gamma}^{\rho}_{\alpha\sigma}h_{\beta\rho}}\\
+    +\bar{D}_{\beta}h_{\alpha\sigma} &= +\partial_{\beta} h_{\alpha\sigma}- \bar{\Gamma}^{\rho}_{\beta\alpha}h_{\rho \sigma}- \cancel{\bar{\Gamma}^{\rho}_{\beta\sigma}h_{\alpha\rho}}\\
+    -\bar{D}_{\sigma}h_{\alpha\beta} &= -\partial_{\sigma} h_{\alpha\beta}+ \cancel{\bar{\Gamma}^{\rho}_{\sigma\alpha}h_{\rho \beta}}+ \cancel{\bar{\Gamma}^{\rho}_{\sigma\beta}h_{\alpha\rho}}\\
+    \noalign{\bigskip\hrule\bigskip}
+    \bar{D}_{\alpha}h_{\beta\sigma}+\bar{D}_{\beta}h_{\alpha\sigma}-\bar{D}_{\sigma}h_{\alpha\beta} &= \partial_\alpha h_{\beta\sigma}+\partial_{\beta}h_{\alpha\sigma}-\partial_{\sigma}h_{\alpha\beta}- 2\bar{\Gamma}^{\rho}_{\alpha\beta}h_{\sigma\rho}
+\end{align*}
+
+Substituting in \cref{christ pert step2} we get the linearised Christoffel symbol 
+\begin{equation}
+\tcboxmath{
+\Gamma^{\mu}_{\alpha\beta}= \bar{\Gamma}^{\mu}_{\ \alpha\beta} + \frac{1}{2}\bar{g}^{\mu\sigma}\qty[\bar{D}_\alpha h_{\beta\sigma}+\bar{D}_{\beta}h_{\alpha\sigma}-\bar{D}_{\sigma}h_{\alpha\beta}]}
+\label{christ pert}
+\end{equation}
+
+\subsection{Linearised Riemann Curvature Tensor}
+
+The unperturbed Riemann Curvature Tensor is: 
+
+$$\bar{R}^{\mu }{}_{\alpha \beta \gamma }=\bar{\Gamma} ^{\mu }{}_{\alpha \gamma ,\beta }- \bar{\Gamma} ^{\mu }{}_{\alpha \beta ,\gamma }+\bar{\Gamma} ^{\rho }{}_{\alpha \gamma } \bar{\Gamma} ^{\mu }{}_{\beta \rho }- \bar{\Gamma} ^{\rho }{}_{\alpha \beta } \bar{\Gamma} ^{\mu }{}_{\gamma \rho }$$
+
+Let's work in a frame where the unperturbed Christoffel symbols are $0$, i.e. $\bar{\Gamma}^{\mu}_{\ \alpha\beta}= 0$. The derivatives of the Christoffel symbols are obviously not necessarily $0$. In this case, ${\Gamma}^{\mu}_{\ \alpha\beta}$ is of the order $\mathcal{O} (h)$ and thus the last two terms in Riemann, which are products of Christoffels, will be of the order $\mathcal{O} \qty(h^2)$ and will be ignored. 
+
+The covariant derivative is the ordinary partial derivative followed by a linear function of the unperturbed Christoffel symbols, $\bar{\Gamma}^{\mu}_{\ \alpha\beta}$. Since these are $0$ in our frame, then the partial derivative is equivalent to the covariant derivative. Remembering that the covariant derivative of the metric is $0$, we start from \cref{christ pert}.
+
+Then the linearised Riemann tensor is: 
+\begin{align}
+    {R}^{\mu}{}_{\alpha \beta \gamma } &=\partial_\beta{\Gamma}^{\mu}{}_{\alpha \gamma}-\partial_\gamma{\Gamma} ^{\mu}{}_{\alpha \beta} \nonumber\\
+    {R}^{\mu}{}_{\alpha \beta \gamma } &= \bar{D}_\beta\qty{\bar{\Gamma}^{\mu}_{\ \alpha\gamma}+\frac{1}{2}\bar{g}^{\mu\sigma}\qty[\bar{D}_\alpha h_{\gamma\sigma}+\bar{D}_{\gamma}h_{\alpha\sigma}-\bar{D}_{\sigma}h_{\alpha\gamma}]} \nonumber\\
+    &- \bar{D}_\gamma\qty{\bar{\Gamma}^{\mu}_{\ \alpha\beta}+\frac{1}{2}\bar{g}^{\mu\sigma}\qty[\bar{D}_\alpha h_{\beta\sigma}+\bar{D}_{\beta}h_{\alpha\sigma}-\bar{D}_{\sigma}h_{\alpha\beta}]} \nonumber\\
+    {R}^{\mu}{}_{\alpha \beta \gamma } &= \partial_\beta \bar{\Gamma}^{\mu}_{\ \alpha\gamma}- \partial_\gamma\bar{\Gamma}^{\mu}_{\ \alpha\beta} \nonumber\\
+    &+\frac{1}{2}\bar{g}^{\mu\sigma}\qty[ \bar{D}_\beta \bar{D}_\alpha h_{\gamma\sigma}+ \bar{D}_\beta \bar{D}_{\gamma}h_{\alpha\sigma}- \bar{D}_\beta \bar{D}_{\sigma}h_{\alpha\gamma}] \nonumber\\
+    &-\frac{1}{2}\bar{g}^{\mu\sigma}\qty[ \bar{D}_\gamma \bar{D}_\alpha h_{\beta\sigma}+ \bar{D}_\gamma \bar{D}_{\beta}h_{\alpha\sigma}- \bar{D}_\gamma \bar{D}_{\sigma}h_{\alpha\beta}]\label{riemann pert step1}
+\end{align}
+Let's analyse the the middle terms in the square brackets. 
+\begin{align}
+    \bar{D}_\alpha \bar{D}_\beta h_{\mu\nu} &= \partial_\alpha \bar{D}_\beta h_{\mu\nu}- \bar{\Gamma}^{\rho}_{\alpha \beta}\bar{D}_\rho h_{\mu\nu}- \bar{\Gamma}^{\rho}_{\alpha \mu}\bar{D}_\beta h_{\rho\nu}- \bar{\Gamma}^{\rho}_{\alpha \nu}\bar{D}_\beta h_{\mu\rho} \nonumber\\
+    %
+    \bar{D}_\alpha \bar{D}_\beta h_{\mu\nu} &= \partial_\alpha \qty(\partial_\beta h_{\mu\nu}- \bar{\Gamma}^{\rho}_{\beta \mu} h_{\rho\nu}- \bar{\Gamma}^{\rho}_{\beta \nu} h_{\mu\rho})
+    %
+    - \bar{\Gamma}^{\rho}_{\alpha \beta}\qty(\partial_\rho h_{\mu\nu}- \bar{\Gamma}^{\sigma}_{\rho \mu} h_{\sigma\nu}- \bar{\Gamma}^{\sigma}_{\rho \nu} h_{\mu\sigma})\nonumber\\
+    %
+    &- \bar{\Gamma}^{\rho}_{\alpha \mu}\qty(\partial_\beta h_{\rho\nu}- \bar{\Gamma}^{\sigma}_{\beta \rho} h_{\sigma\nu}- \bar{\Gamma}^{\sigma}_{\beta \nu} h_{\rho\sigma})
+    %
+    - \bar{\Gamma}^{\rho}_{\alpha \nu}\qty(\partial_\beta h_{\rho\mu}- \bar{\Gamma}^{\sigma}_{\beta \rho} h_{\sigma\mu}- \bar{\Gamma}^{\sigma}_{\beta \mu} h_{\rho\sigma})\label{Cov derivative 2}
+\end{align}
+Now we find the difference of this term with itself having $\alpha$ and $\beta$ flipped. The terms with $\cancel{\texttt{term}}$ are cancelled since they are equal due to symmetries of the Christoffel or $h$ on the RHS. The terms with $\bcancel{\texttt{term}}$ are cancelled since they too are equal, but due to the symmetry of $h$ on LHS; i.e. using the fact that in the final expression, $\mu$ and $\nu$ can be flipped. Moreover, we note that $\rho$ and $\sigma$ are dummy indices and can be swapped.
+\begin{align*}
+    \bar{D}_\alpha \bar{D}_\beta h_{\mu\nu} &= \cancel{\partial_\alpha\partial_\beta h_{\mu\nu}}- \cancel{\bar{\Gamma}^{\rho}_{\beta \mu} \partial_\alpha h_{\rho\nu}}- \cancel{\bar{\Gamma}^{\rho}_{\beta \nu} \partial_\alpha h_{\mu\rho}}- h_{\rho\nu}\partial_\alpha\bar{\Gamma}^{\rho}_{\beta \mu}- h_{\mu\rho}\partial_\alpha \bar{\Gamma}^{\rho}_{\beta \nu}\\
+    %
+    &- \qty(\cancel{\bar{\Gamma}^{\rho}_{\alpha \beta}\partial_\rho h_{\mu\nu}}- \cancel{\bar{\Gamma}^{\rho}_{\alpha \beta}\bar{\Gamma}^{\sigma}_{\rho \mu} h_{\sigma\nu}}- \cancel{\bar{\Gamma}^{\rho}_{\alpha \beta}\bar{\Gamma}^{\sigma}_{\rho \nu} h_{\mu\sigma}})\\
+    %
+    &- \qty(\cancel{\bar{\Gamma}^{\rho}_{\alpha \mu}\partial_\beta h_{\rho\nu}}- \bar{\Gamma}^{\rho}_{\alpha \mu}\bar{\Gamma}^{\sigma}_{\beta \rho} h_{\sigma\nu}- \bcancel{\bar{\Gamma}^{\rho}_{\alpha \mu}\bar{\Gamma}^{\sigma}_{\beta \nu} h_{\rho\sigma}})\\
+    %
+    &- \qty(\cancel{\bar{\Gamma}^{\rho}_{\alpha \nu}\partial_\beta h_{\rho\mu}}- \bar{\Gamma}^{\rho}_{\alpha \nu}\bar{\Gamma}^{\sigma}_{\beta \rho} h_{\sigma\mu}- \bcancel{\bar{\Gamma}^{\rho}_{\alpha \nu}\bar{\Gamma}^{\sigma}_{\beta \mu} h_{\rho\sigma}})\\
+    %
+    %
+    -\bar{D}_\beta \bar{D}_\alpha h_{\mu\nu} &= -\cancel{\partial_\beta\partial_\alpha h_{\mu\nu}}+ \cancel{\bar{\Gamma}^{\rho}_{\alpha \mu} \partial_\beta h_{\rho\nu}}+ \cancel{\bar{\Gamma}^{\rho}_{\alpha \nu} \partial_\beta h_{\mu\rho}}+ h_{\rho\nu}\partial_\beta\bar{\Gamma}^{\rho}_{\alpha \mu}+ h_{\mu\rho}\partial_\beta \bar{\Gamma}^{\rho}_{\alpha \nu}\\
+    %
+    &+ \qty(\cancel{\bar{\Gamma}^{\rho}_{\beta \alpha}\partial_\rho h_{\mu\nu}}- \cancel{\bar{\Gamma}^{\rho}_{\beta \alpha}\bar{\Gamma}^{\sigma}_{\rho \mu} h_{\sigma\nu}}- \cancel{\bar{\Gamma}^{\rho}_{\beta \alpha}\bar{\Gamma}^{\sigma}_{\rho \nu} h_{\mu\sigma}})\\
+    %
+    &+ \qty(\cancel{\bar{\Gamma}^{\rho}_{\beta \mu}\partial_\alpha h_{\rho\nu}}- \bar{\Gamma}^{\rho}_{\beta \mu}\bar{\Gamma}^{\sigma}_{\alpha \rho} h_{\sigma\nu}- \bcancel{\bar{\Gamma}^{\rho}_{\beta \mu}\bar{\Gamma}^{\sigma}_{\alpha \nu} h_{\rho\sigma}})\\
+    %
+    &+ \qty(\cancel{\bar{\Gamma}^{\rho}_{\beta \nu}\partial_\alpha h_{\rho\mu}}- \bar{\Gamma}^{\rho}_{\beta \nu}\bar{\Gamma}^{\sigma}_{\alpha \rho} h_{\sigma\mu}- \bcancel{\bar{\Gamma}^{\rho}_{\beta \nu}\bar{\Gamma}^{\sigma}_{\alpha \mu} h_{\rho\sigma}})\\
+    \noalign{\bigskip\hrule\bigskip}
+    \qty(\bar{D}_\alpha \bar{D}_\beta -\bar{D}_\beta \bar{D}_\alpha){h_{\mu\nu}}&= h_{\rho\nu}\qty(\partial_\beta\bar{\Gamma}^{\rho}_{\mu \alpha}-\partial_\alpha\bar{\Gamma}^{\rho}_{\mu \beta}+ \bar{\Gamma}^{\sigma}_{\mu\alpha}\bar{\Gamma}^{\rho}_{\beta \sigma}- \bar{\Gamma}^{\sigma}_{\mu\beta}\bar{\Gamma}^{\rho}_{\alpha \sigma})\\
+    %
+    &+ h_{\mu\rho}\qty(\partial_\beta \bar{\Gamma}^{\rho}_{\nu\alpha}-\partial_\alpha \bar{\Gamma}^{\rho}_{\nu\beta}+ \bar{\Gamma}^{\sigma}_{\nu\alpha}\bar{\Gamma}^{\rho}_{\beta \sigma}- \bar{\Gamma}^{\sigma}_{\nu\beta}\bar{\Gamma}^{\rho}_{\alpha \sigma} )\\
+    %
+    \qty[\bar{D}_\alpha, \bar{D}_\beta]{h_{\mu\nu}}&= h_{\mu\rho}\bar{R}^{\rho}{}_{\alpha\nu\beta}+ h_{\nu\rho}\bar{R}^{\rho}{}_{\mu\alpha\beta}
+\end{align*}
+
+This is of course a stupid way to do it. General relativity is extremely powerful because of the principle of general covariance. If in one frame all quantities of an expression are covariant, then that expression is valid in all frames. So let's start again from \cref{Cov derivative 2} in a frame where the Christoffels are $0$ and the covariant derivative is equal to the partial derivative. In that case, we're simply left with- 
+\begin{align*}
+    \bar{D}_\alpha \bar{D}_\beta h_{\mu\nu} &= \cancel{\partial_\alpha\partial_\beta h_{\mu\nu}}- h_{\rho\nu}\partial_\alpha\bar{\Gamma}^{\rho}_{\beta \mu}- h_{\mu\rho}\partial_\alpha \bar{\Gamma}^{\rho}_{\beta \nu}\\
+    -\bar{D}_\beta \bar{D}_\alpha h_{\mu\nu} &= -\cancel{\partial_\beta\partial_\alpha h_{\mu\nu}}+ h_{\rho\nu}\partial_\beta\bar{\Gamma}^{\rho}_{\alpha \mu}+ h_{\mu\rho}\partial_\beta \bar{\Gamma}^{\rho}_{\alpha \nu}\\
+    \noalign{\bigskip\hrule\bigskip}
+    \qty[\bar{D}_\alpha, \bar{D}_\beta]{h_{\mu\nu}}&= h_{\mu\rho}\bar{R}^{\rho}{}_{\alpha\nu\beta}+ h_{\nu\rho}\bar{R}^{\rho}{}_{\mu\alpha\beta}
+\end{align*}
+
+which is the same expression as before. Since the equation is covariant, it is valid in all frames. Using this in \cref{riemann pert step1}, we get
+\begin{align*}
+    {R}^{\mu}{}_{\alpha \beta \gamma } &= \bar{R}^{\mu}{}_{\alpha \beta \gamma }\\
+    &+\frac{1}{2}\bar{g}^{\mu\sigma}\qty[ \bar{D}_\beta \bar{D}_\alpha h_{\gamma\sigma}+\bar{D}_\gamma \bar{D}_{\sigma}h_{\alpha\beta}- \bar{D}_\beta \bar{D}_{\sigma}h_{\alpha\gamma}-\bar{D}_\gamma \bar{D}_\alpha h_{\beta\sigma}]\\
+    &+\frac{1}{2}\bar{g}^{\mu\sigma}\qty[h_{\alpha\rho}\bar{R}^{\rho}{}_{\beta\sigma\gamma}+ h_{\sigma\rho}\bar{R}^{\rho}{}_{\alpha\beta\gamma}]
+\end{align*}
+\begin{equation}
+\tcboxmath{
+\begin{aligned}
+    {R}_{\mu\alpha \beta \gamma } = \bar{R}_{\mu\alpha \beta \gamma }+\frac{1}{2}&\left[\bar{D}_\beta \bar{D}_\alpha h_{\gamma\mu}+\bar{D}_\gamma \bar{D}_{\mu}h_{\alpha\beta}- \bar{D}_\beta \bar{D}_{\mu}h_{\alpha\gamma}-\bar{D}_\gamma \bar{D}_\alpha h_{\beta\mu}\right.\\
+    &\qquad + \left.h_{\mu\rho}\bar{R}^{\rho}{}_{\alpha\beta\gamma}- h_{\alpha\rho}\bar{R}^{\rho}{}_{\mu\beta\gamma} \right]\label{riemann pert}
+\end{aligned}}
+\end{equation}
+
+Since this equation is generally covariant, it is valid in all frames. 
+
+\subsection{Linearised Ricci Tensor}
+
+Replacing $\beta$ by $\mu$ in \cref{riemann pert step1}, and carry out contractions of the metric.  
+\begin{align*}
+    {R}^{\mu}{}_{\alpha \mu \gamma } &= \bar{R}^{\mu}{}_{\alpha \mu \gamma }  \nonumber\\
+    &+\frac{1}{2}\bar{g}^{\mu\sigma}\qty[ \bar{D}_\mu \bar{D}_\alpha h_{\gamma\sigma}+ \bar{D}_\mu \bar{D}_{\gamma}h_{\alpha\sigma}- \bar{D}_\mu \bar{D}_{\sigma}h_{\alpha\gamma}] \nonumber\\
+    &-\frac{1}{2}\bar{g}^{\mu\sigma}\qty[ \bar{D}_\gamma \bar{D}_\alpha h_{\mu\sigma}+ \bar{D}_\gamma \bar{D}_{\mu}h_{\alpha\sigma}- \bar{D}_\gamma \bar{D}_{\sigma}h_{\alpha\mu}]\\
+    %
+    {R}_{\alpha \gamma } &= \bar{R}_{\alpha\gamma }  \nonumber\\
+    &+\frac{1}{2}\qty[ \bar{D}_\mu \bar{D}_\alpha h_{\gamma}{}^\mu+ \bar{D}_\mu \bar{D}_{\gamma}h_{\alpha}{}^\mu- \bar{D}_\mu \bar{D}^{\mu}h_{\alpha\gamma}] \nonumber\\
+    &-\frac{1}{2}\qty[ \bar{D}_\gamma \bar{D}_\alpha h_{\mu}{}^\mu+ \bar{D}_\gamma \bar{D}_{\mu}h_{\alpha}{}^\mu- \bar{D}_\gamma \bar{D}^{\mu}h_{\alpha\mu}]
+\end{align*}
+
+The last term can be written as
+$$\bar{D}_\gamma \bar{D}^{\mu}h_{\alpha\mu}= \bar{g}_{\mu\sigma}\bar{D}_\gamma \bar{D}^{\mu}h_{\alpha}{}^\sigma= \bar{D}_\gamma \bar{D}_\sigma h_{\alpha}{}^\sigma= \bar{D}_\gamma \bar{D}_\mu h_{\alpha}{}^\mu$$
+
+This cancels with the second last term. We are then left with (replacing $\gamma$ by $\beta$)
+
+\begin{equation}
+    \tcboxmath{
+    \begin{aligned}
+    {R}_{\alpha \beta } &= \bar{R}_{\alpha\beta } +\frac{1}{2}\qty[ \bar{D}_\mu \bar{D}_\alpha h_{\beta}{}^\mu+ \bar{D}_\mu \bar{D}_{\beta}h_{\alpha}{}^\mu- \bar{D}_\mu \bar{D}^{\mu}h_{\alpha\beta}-\bar{D}_\beta \bar{D}_\alpha h_{\mu}{}^\mu]
+    \end{aligned}\label{ricci ten pert}
+    }
+\end{equation}
+
+\subsection{Linearised Ricci Scalar}
+
+We just need to contract the full Ricci Tensor using $g^{\alpha\beta}= \bar{g}^{\alpha\beta}- h^{\alpha\beta}$, and keep terms linear in $h$. 
+\begin{align*}
+    R &= \qty(\bar{g}^{\alpha\beta}- h^{\alpha\beta})\qty{\bar{R}_{\alpha\beta } +\frac{1}{2}\qty[ \bar{D}_\mu \bar{D}_\alpha h_{\beta}{}^\mu+ \bar{D}_\mu \bar{D}_{\beta}h_{\alpha}{}^\mu- \bar{D}_\mu \bar{D}^{\mu}h_{\alpha\beta}-\bar{D}_\beta \bar{D}_\alpha h_{\mu}{}^\mu]}\\
+    R &= \bar{R}-h^{\alpha\beta}\bar{R}_{\alpha\beta }+ \frac{1}{2}\qty[\bar{D}_\mu \bar{D}_\alpha h^{\alpha\mu}+ \bar{D}_\mu \bar{D}_\beta h^{\beta\mu}- \bar{D}_\mu \bar{D}^{\mu}h_{\alpha}{}^\alpha- \bar{D}_\beta \bar{D}^\beta h_{\mu}{}^\mu]
+\end{align*}
+\begin{equation}
+    \tcboxmath{
+    \begin{aligned}
+        R&= \bar{R}-h^{\mu\nu}\bar{R}_{\mu\nu}+ \bar{D}_\mu \bar{D}_\nu h^{\mu\nu}- \bar{D}_\mu \bar{D}^{\mu}h_{\nu}{}^\nu
+    \end{aligned}\label{ricci sca pert}}
+\end{equation}
+
+\subsection{Linearised Einstein Field Equations}
+
+The linearised Einstein tensor is obtained by simply collecting the terms we already have, upto first order in $h$. Using \cref{ricci ten pert,ricci sca pert} we get
+\begin{align*}
+    G_{\alpha\beta}&= R_{\alpha\beta}-\frac{1}{2}g_{\alpha\beta}R\\
+    G_{\alpha\beta}&= \bar{R}_{\alpha\beta } +\frac{1}{2}\qty[ \bar{D}_\mu \bar{D}_\alpha h_{\beta}{}^\mu+ \bar{D}_\mu \bar{D}_{\beta}h_{\alpha}{}^\mu- \bar{D}_\mu \bar{D}^{\mu}h_{\alpha\beta}-\bar{D}_\beta \bar{D}_\alpha h_{\mu}{}^\mu]\\
+    &-\frac{1}{2}\qty(\bar{g}_{\alpha\beta}+h_{\alpha\beta})\qty{\bar{R}-h^{\mu\nu}\bar{R}_{\mu\nu}+ \bar{D}_\mu \bar{D}_\nu h^{\mu\nu}- \bar{D}_\mu \bar{D}^{\mu}h_{\nu}{}^\nu}
+\end{align*}
+\begin{equation}
+\tcboxmath{
+    \begin{aligned}
+        G_{\alpha\beta}= \bar{G}_{\alpha\beta}&+\frac{1}{2}\left[\bar{D}_\mu \bar{D}_\alpha h_{\beta}{}^\mu+ \bar{D}_\mu \bar{D}_{\beta}h_{\alpha}{}^\mu- \bar{D}_\mu \bar{D}^{\mu}h_{\alpha\beta}-\bar{D}_\beta \bar{D}_\alpha h_{\mu}{}^\mu \right.\\
+        &\left.+\bar{g}_{\alpha\beta}h^{\mu\nu}\bar{R}_{\mu\nu}- \bar{g}_{\alpha\beta}\bar{D}_\mu \bar{D}_\nu h^{\mu\nu}+ \bar{g}_{\alpha\beta}\bar{D}_\mu \bar{D}^{\mu}h_{\nu}{}^\nu- h_{\alpha\beta}\bar{R}\right]
+    \end{aligned}}
+\end{equation}
+
+The linearised field equations upto first order of perturbation is hence 
+\[\bar{G}_{\mu\nu}+ \delta G_{\mu\nu}= 8\pi\qty(\bar{T}_{\mu\nu}+\delta T_{\mu\nu})\]
+
+\section{Perturbed Perfect Fluid Energy Momentum Tensor}
+
+The perturbation of energy momentum will be carried by the perturbation of four-velocity, pressure, density and the metric. Here we'll consider the unperturbed energy momentum tensor of a perfect fluid, with the perturbation of the covariant four-velocity having a minus sign. As a check of this, consider the four-velocity normalisation-
+\begin{align*}
+    U_\mu U^\mu &= -1\\
+    \qty(\bar{U}_\mu- \delta U_\mu)\qty(\bar{U}^\mu+ \delta U^\mu)&= -1\\
+    \cancel{\bar{U}_\mu \bar{U}^\mu}+ \bar{U}_\mu \delta\bar{U}^\mu- \bar{U}^\mu\delta\bar{U}_\mu&= \cancel{-1}\\
+    \bar{U}_\mu\delta\bar{U}^\mu- \bar{g}_{\mu\nu}\bar{U}^\mu\delta\bar{U}^\nu&= 0\\
+    \bar{U}_\mu\delta\bar{U}^\mu-\bar{U}_\nu\delta\bar{U}^\nu&= 0\\
+    0&= 0
+\end{align*}
+
+Thus the perturbations of the contravariant and covariant four velocities are correct. 
+
+The perturbed energy momentum tensor is- 
+\begin{align}
+    \delta T_\mu{}^\nu &= \qty(p+\varepsilon+ \delta p+\delta\varepsilon)U_\mu U^\nu + \qty(p+\delta p)\delta_\mu^\nu - \qty(p+\varepsilon)\bar{U}_\mu \bar{U}^\nu - p\delta_\mu^\nu \nonumber\\
+    \delta T_\mu{}^\nu &= \qty(p+\varepsilon)\qty[U_\mu U^\nu- \bar{U}_\mu \bar{U}^\nu]+\qty(\delta p+\delta\varepsilon)U_\mu U^\nu + \delta p\delta_\mu^\nu \label{pert T 1}\\
+    \delta T_\mu{}^\nu &= \qty(p+\varepsilon)\qty[\qty(\bar{U}_\mu-\delta U_\mu)\qty(\bar{U}^\nu+ \delta U^\nu)- \bar{U}_\mu \bar{U}^\nu] \nonumber\\
+    &+\qty(\delta p+\delta\varepsilon)\qty[\qty(\bar{U}_\mu-\delta U_\mu)\qty(\bar{U}^\nu+ \delta U^\nu)] + \delta p\delta_\mu^\nu \nonumber\\
+    \delta T_\mu{}^\nu &= \qty(p+\varepsilon)\qty[\bar{U}_\mu \delta U^\nu-\bar{U}^\nu \delta U_\mu] \nonumber\\
+    &+\qty(\delta p+\delta\varepsilon)\qty[\bar{U}_\mu \bar{U}^\nu+\bar{U}_\mu \delta U^\nu-\bar{U}^\nu \delta U_\mu] + \delta p\delta_\mu^\nu \label{pert T 2}
+\end{align}
+
+\cref{pert T 1} and \cref{pert T 2} are two equivalent forms of the perturbed energy momentum tensor. 
+
+\subsection{Static Perfect Fluid Perturbations}
+
+If the fluid is static then the four velocity will simply be (unperturbed four velocity only has a time-like component)-$${U}^\mu=[\bar{U}^0+\delta U^0, \delta U^1, \delta U^2, \delta U^3]$$ 
+
+Then the perturbed energy momentum components are-
+\begin{enumerate}
+    \item Using \cref{pert T 2}
+    \begin{align*}
+        \delta T_0{}^0&= \qty(p+\varepsilon)\qty[\cancel{\bar{U}_0 \delta U^0}-\cancel{\bar{U}^0 \delta U_0}]+\qty(\delta p+\delta\varepsilon)\qty[{\bar{U}_0 \bar{U}^0}+\cancel{\bar{U}_0 \delta U^0}-\cancel{\bar{U}^0 \delta U_0}] + \delta p\delta_0^0\\
+        &= \qty(p+\varepsilon)\cdot 0-\qty(\delta p+\delta\varepsilon) + \delta p\\
+        &= -\delta \varepsilon
+    \end{align*}
+    \item Again, using \cref{pert T 2}
+    \begin{align*}
+        \delta T_i{}^i&= \qty(p+\varepsilon)\qty[\cancel{\bar{U}_i \delta U^i}-\cancel{\bar{U}^i \delta U_i}]+\qty(\delta p+\delta\varepsilon)\qty[{\bar{U}_i \bar{U}^i}+\cancel{\bar{U}_i \delta U^i}-\cancel{\bar{U}^i \delta U_i}] + \delta p\delta_i^i\\
+        &= \qty(p+\varepsilon)\cdot 0+\qty(\delta p+\delta\varepsilon)\cdot 0 + \delta p\\
+        &= \delta p
+    \end{align*}
+    \item Using \cref{pert T 1} (The middle term goes away since the perturbation is of order $\mathcal{O}\qty(\delta^2)$ due to $\delta p$ and $\delta \varepsilon$, and since $U^i= \bar{U}^i+\delta U^i= \delta U^i$)
+    \begin{align*}
+        \delta T_0{}^i&= \qty(p+\varepsilon)\qty[U_0 U^i- \bar{U}_0 \bar{U}^i]+\qty(\delta p+\delta\varepsilon)U_0 U^i + \delta p\delta_0^i\\
+        &= \qty(p+\varepsilon)U_0 U^i+\qty(\delta p+\delta\varepsilon)U_0 \delta U^i\\
+        &= \qty(p+\varepsilon)U_0 U^i
+    \end{align*}
+    \item Again, using \cref{pert T 1}
+    \begin{align*}
+        \delta T_i{}^j&= \qty(p+\varepsilon)\qty[\delta U_i \delta U^j- \bar{U}_i \bar{U}^j]+\qty(\delta p+\delta\varepsilon)\delta U_i \delta U^j + \delta p\delta_i^j\\
+        &= 0
+    \end{align*}
+\end{enumerate}
+
+Hence- 
+\begin{equation}
+\delta T_\mu{}^\nu= \begin{bmatrix}
+    \ -\delta\varepsilon & \qty(p+\varepsilon)U_0 U^1 & \qty(p+\varepsilon)U_0 U^2 & \qty(p+\varepsilon)U_0 U^3 \ \\[10pt]
+    \ \qty(p+\varepsilon)U_1 U^0 & \delta p & 0 & 0 \ \\[10pt]
+    \ \qty(p+\varepsilon)U_2 U^0 & 0 & \delta p & 0 \ \\[10pt]
+    \ \qty(p+\varepsilon)U_3 U^0 & 0 & 0 & \delta p\ 
+\end{bmatrix}\label{pert T}
+\end{equation}
+
+This is the perturbed static perfect fluid energy momentum tensor, upto first order of perturbation.
+
+\section{Gravitational Waves in Flat Spacetime}
+
+Let the unperturbed metric be Minkowskian. This means that the covariant derivatives become partial derivatives and $\bar{G}_{\mu\nu}= \bar{R}_{\mu\nu}= \bar{R}= 0$. Thus the Einstein tensor now becomes- 
+\begin{align*}
+    G_{\alpha\beta}= &\frac{1}{2}\left[\partial_\mu \partial_\alpha h_{\beta}{}^\mu+ \partial_\mu \partial_{\beta}h_{\alpha}{}^\mu- \partial_\mu \partial^{\mu}h_{\alpha\beta}-\partial_\beta \partial_\alpha h_{\mu}{}^\mu- \eta_{\alpha\beta}\partial_\mu \partial_\nu h^{\mu\nu}+ \eta_{\alpha\beta}\partial_\mu \partial^{\mu}h_{\nu}{}^\nu\right]
+\end{align*}
+
+Let $h= h_\mu{}^\mu$ be the trace of the perturbation. Let's define another quantity- $$\bar{h}_{\mu\nu}= h_{\mu\nu}-\frac{1}{2}\eta_{\mu\nu}h$$
+This is called the trace reversed perturbation since $\bar{h}= h-\frac{1}{2}\cdot 4 h= -h$. This also means that $${h}_{\mu\nu}= \bar{h}_{\mu\nu}-\frac{1}{2}\eta_{\mu\nu}\bar{h}$$
+and, $${h}_\mu{}^\nu= \bar{h}_\mu{}^\nu-\frac{1}{2}\delta_\mu{}^\nu\bar{h}$$
+ 
+
+Then the Einstein tensor can be written as
+\begin{align*}
+    G_{\alpha\beta}= &\frac{1}{2}\left[\partial_\mu \partial_\alpha \bar{h}_{\beta}{}^\mu -\cancel{\frac{1}{2}\partial_\beta \partial_\alpha \bar{h}}+ \bar{\partial}_\mu \partial_{\beta}\bar{h}_{\alpha}{}^\mu- \cancel{\frac{1}{2}\partial_\alpha \partial_{\beta}\bar{h}}\right.\\
+    &\left.- \partial_\mu \partial^{\mu}\bar{h}_{\alpha\beta}+\bcancel{\frac{1}{2} \partial_\mu \partial^{\mu}\eta_{\alpha\beta}\bar{h}}+\cancel{\partial_\beta \partial_\alpha \bar{h}}- \eta_{\alpha\beta}\partial_\mu \partial_\nu \bar{h}^{\mu\nu} +\bcancel{\frac{1}{2}\eta_{\alpha\beta}\partial_\mu \partial_\nu \bar{h}}- \bcancel{\eta_{\alpha\beta}\partial_\mu \partial^{\mu}\bar{h}}\right]
+\end{align*}
+\begin{equation}
+    \tcboxmath{
+    \begin{aligned}
+        G_{\alpha\beta}&= -\frac{1}{2}\left[\square\bar{h}_{\alpha\beta} + \eta_{\alpha\beta}\partial_\mu \partial_\nu \bar{h}^{\mu\nu}- \partial_\mu \partial_\alpha \bar{h}_{\beta}{}^\mu- \bar{\partial}_\mu \partial_{\beta}\bar{h}_{\alpha}{}^\mu \right]
+    \end{aligned}}\label{pert G mink}
+\end{equation}
+
+Where $\square= \partial_\mu\partial^\mu$ is the D'Alembertian operator.
+
+\subsection{Lorentz/ de Donder Gauge}
+
+There is still some residual gauge symmetry remaining in the above equation. To see this, consider the transformation $x^\mu\to x'^\mu= x^\mu+\xi^\mu$. This immediately gives- $$x^\mu= x'^\mu-\xi^\mu;\qquad \pdv{x^\alpha}{x'^\mu}= \delta_\mu^\alpha-\partial_\mu\xi^\alpha$$
+And the transformation of the metric becomes (upto first order in $h$, considering $\partial_\mu\xi_\nu$ is of the order of $h_{\mu\nu}$)- 
+\begin{align*}
+    g'_{\mu\nu}&= \pdv{x^\alpha}{x'^\mu}\pdv{x^\beta}{x'^\nu}\ g_{\alpha\beta}\\
+    \eta_{\mu\nu}+ h'_{\mu\nu}&= \qty(\delta_\mu^\alpha-\partial_\mu\xi^\alpha)\qty(\delta_\mu^\alpha-\partial_\mu\xi^\alpha)\qty(\eta_{\alpha\beta}+h_{\alpha\beta})\\
+    \eta_{\mu\nu}+ h'_{\mu\nu}&= \delta_\mu^\alpha\qty(\eta_{\alpha\beta}+h_{\alpha\beta})-\delta_\mu^\alpha\partial_\nu\xi^\beta\eta_{\alpha\beta}-\delta_\nu^\beta\partial_\mu\xi^\alpha\eta_{\alpha\beta}\\
+    h'_{\mu\nu}&= h_{\mu\nu}-\qty(\partial_\mu\xi_\nu+\partial_\nu\xi_\mu)\\
+    h'&= h-2\partial_\rho\xi^\rho
+\end{align*}
+Now, 
+\begin{align*}
+    \bar{h}'_{\mu\nu}&= \qty(h_{\mu\nu}-\frac{1}{2}\eta_{\mu\nu}h)'\\
+    \bar{h}'_{\mu\nu}&= h'_{\mu\nu}-\frac{1}{2}\eta{_\mu\nu}h'\\
+    \bar{h}'_{\mu\nu}&= h_{\mu\nu}-\qty(\partial_\mu\xi_\nu+\partial_\nu\xi_\mu)- \frac{1}{2}\eta_{\mu\nu}h+\eta_{\mu\nu}\partial_\rho\xi^\rho\\
+    \bar{h}'_{\mu\nu} &= \bar{h}_{\mu\nu}-\qty(\partial_\mu\xi_\nu+\partial_\nu\xi_\mu+ \eta_{\mu\nu}\partial_\rho\xi^\rho)
+\end{align*}
+
+And the divergence will transform like 
+\begin{align*}
+    \qty(\partial^\nu\bar{h}_{\mu\nu})' &= \partial^\nu\bar{h}_{\mu\nu}-\cancel{\partial_\mu\partial^\nu\xi_\nu}-\partial_\nu\partial^\nu\xi_\mu+ \cancel{\partial_\mu\partial_\rho\xi^\rho}\\
+    \qty(\partial^\nu\bar{h}_{\mu\nu})' &= \partial^\nu\bar{h}_{\mu\nu}-\square\xi_\mu
+\end{align*}
+
+Now if we choose a gauge condition $\partial^\nu\bar{h}_{\mu\nu}= 0$ then $\square\xi_\mu= 0$. But since the D'Alembertian operator is invertible, $\square\xi_\mu= 0$ always has a solution represented through Green's functions. This means we can always choose a gauge where $\partial^\nu\bar{h}_{\mu\nu}= 0$. Applying this condition in \cref{pert G mink} we get $$G_{\alpha\beta}= -\frac{1}{2}\square\bar{h}_{\alpha\beta}$$
+
+Then the weak field Einstein equations are, from $G_{\mu\nu}= 8\pi G T_{\mu\nu}$
+\begin{equation}
+    \tcboxmath{\square \bar{h}_{\mu\nu}= -16\pi G T_{\mu\nu}}
+\end{equation}
+
+This is a standard wave equation with source $T_{\mu\nu}$. The solutions will be solutions to gravitational waves from sources that move in a Minkowskian background. 
+
+\chapter{Non-radial Oscillations}
+
+\emph{Using the [-,+,+,+] convention for the metric, in units of h=G=c=1.}
+
+\emph{References: 
+\begin{enumerate}
+    \item Thorne and Campolattaro- Non-radial Pulsation of General-Relativistic Stellar Models I
+    \item Sotani- Signatures of hadron-quark mixed phase in gravitational waves
+    \item Shapiro and Teukolsky- Black Holes, White Dwarfs, and Neutron Stars
+\end{enumerate}}
+
+The entirety of this excercise involves solving the linearised Einstein equations for the Schwarzschild metric. To start off, we need the form of the perturbation $h_{\mu\nu}$. Since the perturbations are around the spherically symmetric Schwarzschild metric, it makes sense to decompose $h_{\mu\nu}$ into \emph{tensor} spherical harmonics. Tensor because $h_{\mu\nu}$ itself is a tensor. To find the form of $h_{\mu\nu}$ is a subject in itself called black hole perturbation theory and involves things which I've heard like Zerilli equations, Regge- Wheeler metric and such. Details can be found in Michele Maggiore's \emph{Gravitational Waves- Volume II}. 
+
+Although complex, the method is straightforward. We've already found the linearised Einstein equations, and the perturbed energy momentum tensor for the static perfect fluid. The thing to do is to plug in the values and solve. 
+
+\section{Some Thermodynamics}
+
+\subsection{Relation between Energy Density and Number Density}
+
+The first law describes the rate of change of total mass-energy of the system when nuclear reactions may occur, volume may change and heat may be added, but the total number of baryons remains fixed. Let us deal with adiabatic processes where the change of entropy is $0$ and no nuclear reactions occur (i.e. the number of particles remain fixed). In that case-
+\begin{align*}
+    \dd\qty({U})&= -p\dd{V}+T\dd{S}+ \mu_B \dd{N}\\
+    \Rightarrow\dd\qty(\varepsilon V)&= -p\dd{V}\\
+    \dd\qty({\varepsilon\  \frac{N}{n}})&= -p\dd\qty(\frac{N}{n})\\
+    \dd\qty({\frac{\varepsilon}{n}})&= -p\dd\qty(\frac{1}{n})\\
+    \frac{\dd{\varepsilon}}{n}- \frac{\varepsilon}{n^2}\dd n&= \frac{p}{n^2}\dd n \\
+    \dd{\varepsilon}&= \frac{p+\varepsilon}{n}\dd n
+\end{align*}
+
+From which an important consequence is an equation relating changes in energy density to changes in baryon number density: 
+\begin{equation}
+    \qty(\pdv{\varepsilon}{n})_{s}= \frac{p+\varepsilon}{n} \label{de/dn 1}
+\end{equation}
+
+\cref{de/dn 1} is valid for each fluid in our system. In case of a two fluid system, this equation is the same, only the energy density, pressure and number density become the total energy density total pressure and total number density of the system. Note that in general, the total energy density and number density is \emph{not} just the sum of individual energy density and number density. 
+
+\subsection{Adiabatic Compression Index}
+
+For now, we're taking the number density, $n$ to be the independent variable in our equation of state ($p=p(n)$). In order to take variations of the equation of state, we assume that the perturbation is adiabatic so the change in entropy is neglected.
+\begin{align*}
+    \Delta p&= \qty(\pdv{p}{n})_s\Delta n\\
+    \frac{\Delta p}{p}&= \frac{\partial p}{p}\frac{n}{\partial n}\frac{\Delta n}{n}= \frac{\partial \ln p}{\partial \ln n}\frac{\Delta n}{n}
+\end{align*}
+
+We now define $\gamma$, the adiabatic compression index as $\gamma= \frac{\partial \ln p}{\partial \ln n}$. From \cref{de/dn 1}, we can replace $\partial \varepsilon/ \partial n$
+\begin{align}
+    \gamma&= \frac{\partial \ln p}{\partial \ln n} = \frac{n}{p}\frac{\partial p}{\partial n}\nonumber\\
+    \gamma&= \frac{n}{p}\frac{\partial p}{\partial \varepsilon}\frac{\partial \varepsilon}{\partial n}\nonumber\\
+    \gamma&= \frac{n}{p}\frac{\partial p}{\partial \varepsilon}\qty(\frac{p+\varepsilon}{n})\nonumber\\
+    \gamma&= \frac{p+\varepsilon}{p}\frac{\partial p}{\partial \varepsilon} \label{gamma}
+\end{align}
+
+In case of two fluids, again, the pressure and energy densities are replaced by the total pressure and total energy density. 
+
+
+\section{Relativistic Cowling Approximation}
+
+In a perturbed star, the fluctuations of fluid inside the star causes the metric to be perturbed. The metric perturbations further have a back-reaction on the star itself. Things become immensly simplified if we neglect the metric perturbations. We now obviously won't get gravitational waves which we expect for perturbations having $l\geq 2$, but we can approximate the frequency of the resultant gravitational wave to be the same as the oscillation frequency of fluid perturbations. This gives the wrong value of frequency, but the qualitative results we desire are quite similar. 
+
+Now since there is no metric perturbation, we don't even need to solve the linearised Einstein equations. We just need to deal with the perturbed energy momentum tensor. The method followed here is taken from the references of this chapter. 
+
+\subsection{Perturbations of Four-Velocity}
+
+The \emph{fluid Lagrangian displacement vector} governs the displacement of fluid inside the star. It is given by
+\begin{equation}
+    \xi^i= \qty(\frac{e^{-\Lambda}}{r^2}W(t,r)\  Y_{lm}(\theta, \phi),\ \frac{-V(t,r)}{r^2} \ \partial_\theta Y_{lm}(\theta, \phi), \ \frac{-V(t,r)}{r^2\sin^2\theta}\  \partial_\phi Y_{lm}(\theta, \phi))    
+\end{equation}
+
+Then the perturbations of four-velocity is simply the time variation of the displacement. The time-like perturbed velocity is $0$. On the other hand, only the time-like four velocity for the unperturbed static fluid is non-zero. Then the total four velocity is given by
+\begin{equation}
+    U^\mu= \qty(e^{-\Phi},\ \frac{e^{-\Lambda}}{r^2}\partial_t W\ Y_{lm},\ \frac{-\partial_t V}{r^2} \ \partial_\theta Y_{lm}, \ \frac{-\partial_tV}{r^2\sin^2\theta}\  \partial_\phi Y_{lm})
+\end{equation}
+
+\subsection{Perturbed Number Density}
+
+The Lagrangian change in the number density of baryons is
+$$\Delta n= -n \partial_i \xi^i -\frac{n}{2}\frac{\delta\qty[{}^{(3)}g]}{{}^{(3)}g}$$
+
+Here $\partial_i \xi^i$ is the divergence of fluid displacement with respect to the 3-geometry at constant time and ${}^{(3)}g$ is the determinant of the metric of that 3-geometry. This second term is neglected in the Cowling approximation. In spherical polar coordinates, the Lagrangian variation of number density comes out to be (in the Regge- Wheeler gauge, using $r^2 \nabla^2 Y_{lm}= -l(l+1)Y_{lm}$)
+\begin{align}
+    \frac{\Delta n}{n}&= -\qty(e^{-\Lambda}\frac{W'}{r^2}+\frac{l(l+1)}{r^2}V)Y_{lm}\label{dn/n} 
+\end{align} 
+
+\subsection{Perturbed Energy Density and Pressure}
+
+The Lagrangian variation in energy density comes from \cref{de/dn 1}. \[\Delta \varepsilon= \qty(p+\varepsilon)\frac{\Delta n}{n}\]
+
+The Lagrangian variation in pressure is 
+\begin{align*}
+    \Delta p &= \pdv{p}{\varepsilon}\Delta \varepsilon\\
+    \Delta p &= \pdv{p}{\varepsilon}\qty(p+\varepsilon)\frac{\Delta n}{n}\\
+    \Delta p &= \gamma p\frac{\Delta n}{n}
+\end{align*}
+
+To go from a Lagrangian frame$\qty(\Delta)$ to an Eulerian frame$\qty(\delta)$, we have the following relation \[\delta= \Delta- \vec{\xi}\cdot \vec{\nabla}\]
+
+Where the operators act on scalar quantities. In our case, pressure, energy density and number density only have a radial dependance, and thus for a quantity $Q(r)$, \[\delta Q= \Delta Q- Q'\xi^r\]
+
+Thus the \emph{Eulerian} variations in pressure and energy density are
+\begin{align}
+    \delta \varepsilon&= \qty(p+\varepsilon)\frac{\Delta n}{n} - \varepsilon'\xi^r\\
+    \delta p&= \gamma p\frac{\Delta n}{n} - p'\xi^r
+\end{align}
+
+Yet again, for the two fluid case, these same relations hold, with the singular quantities replaced by total ones. 
+
+\subsection{Perturbation Equations}
+
+Now we take a variation of the energy momentum conservation law $\delta\qty(\nabla_\nu T^{\mu\nu})=0$. In the Cowling approximation, this is equivalent to $\nabla_\nu\delta T^{\mu\nu}=0$ where $\delta T^{\mu\nu}$ is given by \cref{pert T}. The components of the covariant velocity $U^\mu$, $\delta p$ and $\delta \varepsilon$ have been found above. The covariant derivative is defined with respect to the Schwarzschild metric. Plugging in all the values and taking the covariant derivatives, we'll get four equations for each independent $\mu$. Since we only have two unknowns $W$ and $V$, we take the two equations as $\nabla_\nu\delta T^{r\nu}=0$ and $\nabla_\nu\delta T^{\theta\nu}=0$. These two equations respectively are 
+\begin{align}
+    0={}& \frac{p+\varepsilon}{r^2}e^{\Lambda-2\Phi}\ddot{W}-
+    \frac{\varepsilon'+p'}{r^2}\Phi' e^{-\Lambda}{W}-
+    \pdv{}{r}\qty[\frac{\gamma p}{r^2}\qty{e^{-\Lambda}W'+l(l+1)V}+e^{-\Lambda}\frac{p'}{r^2}W]\nonumber\\
+    &\frac{-\Phi'}{r^2}\qty[p+\varepsilon+ \gamma p]\qty[e^{-\Lambda}W'+l(l+1)V]\label{pulse1 step1}\\
+   0={}& \qty(p+\varepsilon)e^{-2\Phi}\ddot{V}+\qty[\frac{\gamma p}{r^2}\qty{e^{-\Lambda}W'+l(l+1)V}+e^{-\Lambda}\frac{p'}{r^2}W]\label{pulse2 step1}
+\end{align}
+
+The \emph{dots} represent time derivatives while the \emph{dashes} represent radial derivatives. Now we assume a harmonic time dependence for the perturbation variables. That is, $W(t,r)= W(r)e^{i\omega t}$ and $V(t,r)= V(r)e^{i\omega t}$. Then $\ddot {W}= -\omega^2 W$ and same for $V$. We'll now start framing the pulsation equations in a better way. Throughout, we've used $p'= -\Phi'(p+\varepsilon)$ and $\frac{p'}{p+\varepsilon}= -\Phi'$. Both these equations are valid in the two fluid case since 
+\[\frac{p_1'+p_2'}{p_1+\varepsilon_1+p_2+\varepsilon_2}=\frac{-(p_1+\varepsilon_1)\Phi'-(p_2+\varepsilon_2)\Phi'}{p_1+\varepsilon_1+p_2+\varepsilon_2}= -\Phi' \]
+
+Now, taking the radial derivative of \cref{pulse2 step1}, the equations become
+\begin{align}
+    0={} & -\frac{p+\varepsilon}{r^2}e^{\Lambda-2\Phi}\omega^2{W}- \frac{\varepsilon'+p'}{r^2}\Phi' e^{-\Lambda}{W}\nonumber\\
+    &-\pdv{}{r}\qty[\frac{\gamma p}{r^2}\qty{e^{-\Lambda}W'+l(l+1)V}+e^{-\Lambda}\frac{p'}{r^2}W]\nonumber\\
+    &-\frac{1}{r^2}\qty[-p'+ \Phi'\gamma p]\qty[e^{-\Lambda}W'+l(l+1)V]\label{pulse1 step2}\\
+   0={} & \pdv{}{r}\qty[-\qty(p+\varepsilon)e^{-2\Phi}\omega^2{V}]+\pdv{}{r}\qty[\frac{\gamma p}{r^2}\qty{e^{-\Lambda}W'+l(l+1)V}+e^{-\Lambda}\frac{p'}{r^2}W]\label{pulse2 step2}
+\end{align}
+
+Subtracting \cref{pulse2 step2} - \cref{pulse1 step2} we get
+\begin{align}
+    0=& -\pdv{}{r}\qty(\qty(p+\varepsilon)e^{-2\Phi}\omega^2{V})+\frac{p+\varepsilon}{r^2}e^{\Lambda-2\Phi}\omega^2{W}+ \frac{\varepsilon'+p'}{r^2}\Phi' e^{-\Lambda}{W}\nonumber\\
+    &+2\pdv{}{r}\qty[\frac{\gamma p}{r^2}\qty{e^{-\Lambda}W'+l(l+1)V}+e^{-\Lambda}\frac{p'}{r^2}W]\nonumber\\
+    &-\frac{p'}{r^2}\qty[e^{-\Lambda}W'+l(l+1)V]+ \frac{\Phi'\gamma p}{ r^2}\qty[e^{-\Lambda}W'+l(l+1)V]
+\end{align}
+
+Now replacing the middle term with $\qty(p+\varepsilon)e^{-2\Phi}\omega^2{V}$ and the square brackets in the last term with $\frac{r^2}{\gamma p}\qty[\qty(p+\varepsilon)e^{-2\Phi}\omega^2{V}- e^{-\Lambda}\frac{p'}{r^2}W]$ from \cref{pulse2 step1} we get
+\begin{align*}
+    0={}& \pdv{}{r}\qty[\qty(p+\varepsilon)e^{-2\Phi}\omega^2{V}]+\frac{p+\varepsilon}{r^2}e^{\Lambda-2\Phi}\omega^2{W}+ \frac{\varepsilon'+p'}{r^2}\Phi' e^{-\Lambda}{W}\\
+    &-\frac{p'}{\gamma p}\qty[\qty(p+\varepsilon)e^{-2\Phi}\omega^2{V}- e^{-\Lambda}\frac{p'}{r^2}W]+ \qty(p+\varepsilon)\Phi'e^{-2\Phi}\omega^2{V}- \frac{p'}{r^2}\Phi'e^{-\Lambda}W \\
+    %
+    0={}& (p'+\varepsilon')e^{-2\Phi}\omega^2{V}+ (p+\varepsilon)e^{-2\Phi}\omega^2{V'}-\qty(p+\varepsilon)\Phi' e^{-2\Phi}\omega^2{V}\\
+    &+\frac{p+\varepsilon}{r^2}e^{\Lambda-2\Phi}\omega^2{W}+{\varepsilon'}\Phi' \frac{e^{-\Lambda}}{r^2}{W} -\frac{p'\qty(p+\varepsilon)}{\gamma p}e^{-2\Phi}\omega^2{V}- \frac{p'\qty(p+\varepsilon)}{\gamma p}{\Phi'}\frac{e^{-\Lambda}}{r^2}W\\
+    %
+    0={}& \qty[\frac{p'+\varepsilon'}{p+\varepsilon} -\Phi'-\frac{p'}{\gamma p}]{V}+ {V'}+\frac{e^{\Lambda}}{r^2}{W} + \qty[\frac{\varepsilon'}{p+\varepsilon} - \frac{p'}{\gamma p}]\frac{e^{-\Lambda+2\Phi}}{\omega^2 r^2}{\Phi'}\\
+    %
+    V'&= \qty[\Phi'+\frac{p'}{\gamma p}-\frac{p'+\varepsilon'}{p+\varepsilon} ]{V}-\frac{e^{\Lambda}}{r^2}{W} - \qty[\frac{\varepsilon'}{p+\varepsilon} - \frac{p'}{\gamma p}]\frac{e^{-\Lambda+2\Phi}}{\omega^2 r^2}{\Phi'}W
+\end{align*}
+\begin{equation}
+V'= 2\Phi'V -\frac{e^{\Lambda}}{r^2}{W}+ \qty(\frac{p'}{\gamma p}+\Phi' \frac{\varepsilon'}{p'})\qty[V+\frac{e^{-\Lambda+2\Phi}}{\omega^2 r^2}{\Phi'}W] \label{dV step 1}
+\end{equation}
+
+This is the first mode oscillation equation. The second one is given by rearranging \cref{pulse2 step1}. 
+\begin{equation}
+    W'= \frac{ p+\varepsilon}{ \gamma p }e^{\Lambda-2\Phi}\omega^2 r^2 V- \frac{p'}{\gamma p}W- e^\Lambda l(l+1)V\label{dW step 1}
+\end{equation}
+
+For the two fluid case, all the singular terms will be replaced by total ones. Let's look at the $p'/\gamma p$ term. From \cref{gamma}, 
+\begin{align*}
+    \gamma p &= \qty(p+\varepsilon)\pdv{p}{\varepsilon}\\
+    \frac{p'}{\gamma p}&= \frac{p'}{p+\varepsilon}\ \pdv{\varepsilon}{p}\ = -\Phi'\ \pdv{\varepsilon}{p}
+\end{align*}
+
+These equations are valid in both one fluid and two fluid case. Further, using $\frac{\varepsilon'}{p'}= \dv{\varepsilon}{p}$, and substituting these in \cref{dV step 1,dW step 1} we finally get
+
+\begin{equation}
+\tcboxmath{
+    \begin{aligned}
+        W'&= \pdv{\varepsilon}{p}\qty[\omega^2 r^2e^{\Lambda-2\Phi} V+\Phi'W]- e^\Lambda l(l+1)V\\
+        V'&= 2\Phi'V-\frac{e^{\Lambda}}{r^2}{W}+\qty(\dv{\varepsilon}{p}-\pdv{\varepsilon}{p})\qty[\Phi'\ V+\frac{e^{-\Lambda+2\Phi}}{\omega^2 r^2}{\Phi'^2}\ W]\label{dW_dV}
+    \end{aligned}}
+\end{equation}
+
+This equation is valid for the two-fluid case as well. The difference will be in the $\partial \varepsilon/ \partial p$ term. For the two fluid case, 
+
+\begin{align*}
+    \pdv{\varepsilon}{p}&= \pdv{\qty(\varepsilon_1+\varepsilon_2)}{\qty(p_1+p_2)}\\
+    &= \pdv{\varepsilon_1}{p_1}\pdv{p_1}{\qty(p_1+p_2)}+ \pdv{\varepsilon_2}{p_2}\pdv{p_2}{\qty(p_1+p_2)}\\
+    &= \pdv{\varepsilon_1}{p_1}\frac{p_1'}{p_1'+p_2'}+ \pdv{\varepsilon_2}{p_2}\frac{p_2'}{p_1'+p_2'}\\
+    &= \pdv{\varepsilon_1}{p_1}\frac{-(p_1+\varepsilon_1)\Phi'}{-(p_1+\varepsilon_1+p_2+\varepsilon_2)\Phi'}+ \pdv{\varepsilon_2}{p_2}\frac{-(p_2+\varepsilon_2)\Phi'}{-(p_1+\varepsilon_1+p_2+\varepsilon_2)\Phi'}\\
+    &= \frac{p_1+\varepsilon_1}{p_1+\varepsilon_1+p_2+\varepsilon_2} \ \pdv{\varepsilon_1}{p_1}+ \frac{p_2+\varepsilon_2}{p_1+\varepsilon_1+p_2+\varepsilon_2}\ \pdv{\varepsilon_2}{p_2}
+\end{align*}
+
+The surface boundary condition is $\Delta p= 0$. 
+Using $\gamma= \frac{n}{p}\frac{\Delta p}{\Delta n}$ we get $\Delta p= \gamma p \frac{\Delta n}{n}$. Then using \cref{dn/n,dW_dV} we get
+\begin{align*}
+    \Delta p &= -\gamma p \qty(e^{-\Lambda}\frac{W'}{r^2}+\frac{l(l+1)}{r^2}V)Y_{lm}\\
+    \Delta p &=  Y_{lm}\qty{-\gamma p\frac{e^{-\Lambda}}{r^2}\qty(\pdv{\varepsilon}{p}\qty[\omega^2 r^2e^{\Lambda-2\Phi} V+\Phi'W]- e^\Lambda l(l+1)V)-\gamma p \frac{l(l+1)}{r^2}V}\\
+    \Delta p &=  Y_{lm}\qty{-\gamma p\pdv{\varepsilon}{p}\qty[\omega^2 e^{-2\Phi} V+\frac{e^{-\Lambda}}{r^2}\Phi'W]}
+\end{align*}
+
+Thus, using \cref{gamma},
+\begin{equation}
+    \Delta p =  -\qty(p+\varepsilon)\qty[\omega^2 e^{-2\Phi} V+\frac{e^{-\Lambda}}{r^2}\Phi'W]Y_{lm}\label{Dp}
+\end{equation} 
+
+And the surface boundary condition $\Delta p= 0$ at radius $r= R_*$ reduces to
+\begin{equation}
+    \tcboxmath{\omega^2 r^2e^{\Lambda-2\Phi} V+\Phi' W= 0}
+\end{equation}
+
+In case there is a density discontinuity in the equation of state (one or both in the two fluid case), then additional junction conditions impose the continuity of $W$ and $\Delta p$. The discontinuity only arises in $\varepsilon$, and the rest of the quantities are continuous as is. If the $`+'$ index refers to the point just after the discontinuity, $`-'$ index the one before the discontinuity then $\Phi_+= \Phi_-$, $\Lambda_+= \Lambda_-$ and so on. The continuity of $W$ implies $W_+= W_-$ and $\Delta p$ implies, from \cref{Dp}
+\begin{align*}
+    -\qty(p_+ +\varepsilon_+)\qty[\omega^2 e^{-2\Phi} V_++\frac{e^{-\Lambda}}{r^2}\Phi'W_+]Y_{lm}= -\qty(p_- +\varepsilon_-)\qty[\omega^2 e^{-2\Phi} V_-+\frac{e^{-\Lambda}}{r^2}\Phi'W_-]Y_{lm}
+\end{align*}
+
+Then the junction conditions are
+\begin{equation}
+    \tcboxmath{
+    \begin{aligned}
+        W_+&= W_-\\
+        V_+&= \frac{e^{2\Phi}}{\omega^2 r^2}\qty{\frac{p_- +\varepsilon_-}{p_+ +\varepsilon_+}\qty[\omega^2r^2 e^{-2\Phi} V_-+{e^{-\Lambda}}\Phi'W_-]- {e^{-\Lambda}}\Phi'W_+}
+    \end{aligned}}
+\end{equation}
+
+Here all the values are evaluated at the radius of discontinuity. The same junction conditions will be imposed for as many density discontinuities there are. 
+
+\chapter{Gravitational Redshift}
+
+\emph{Using the [-,+,+,+] convention, $\eta^{\mu\nu}$, in units of h=G=c=1.}
+
+\emph{[Reference: Landau- Classical Theory of Fields- Section 84, 88]}
+\\
+
+A general line element is given by $ds^2= -g_{\mu\nu}dx^\mu dx^\nu$. Multiplying and dividing by the time measured in the lab frame, 
+
+$$\frac{ds^2}{dt^2}= -g_{\mu\nu}\frac{dx^\mu}{dt} \frac{dx^\nu}{dt}$$
+
+Or, if the clock is in rest then $\frac{ds}{dt}= \sqrt{-g_{00}}$
+\begin{equation}
+    \tcboxmath{dt= \qty(-g_{00})^{-1/2}\ ds} \label{eq2.1}   
+\end{equation}
+
+Thus when we measure the ticks of a stationary clock in a gravitational field, the time intervals will not be equal to the invariant time interval. Instead, our measured time will be dilated by a factor of $\qty(-g_{00})^{-1/2}$. This is called \emph{gravitational time dilation}. 
+
+Since frequency is inversely proportional to time, then time dilation corresponds to a decrease in frequency, i.e. frequency shifts towards red. Hence this phenomenon is also called the \emph{gravitational red shift}. 
+
+\section{For Photons}
+
+A ray of light emitted at point $x_1$ in a gravitational field will have the relation $dt_1= \qty(-g_{00}(x_1))^{-1/2}\ ds$ while when it reaches point $x_2$, the relation changes to $dt_2= \qty(-g_{00}(x_2))^{-1/2}\ ds$. Dividing, 
+$$\frac{dt_1}{dt_2}= \frac{\nu_2}{\nu_1}= \sqrt{\frac{-g_{00}(x_2)}{-g_{00}(x_1)}}$$
+
+where $\nu_1$ and $\nu_2$ are the frequencies at the respective points as seen by the lab frame. We see that $\nu_1 \qty(-g_{00}(x_1))^{-1/2}= \nu_2 \qty(-g_{00}(x_2))^{-1/2}$. 
+
+Since for photons, $E= h\nu$, we easily see that $E_1\cdot \qty(-g_{00}(x_1))^{1/2}= E_2\cdot \qty(-g_{00}(x_2))^{1/2}$
+
+This means that in a gravitational field, not the energy, but $E\sqrt{-g_{00}}$ is conserved (at least for photons as of yet). The same can be seen for particles with mass as well, albeit a bit tediously.
+
+\section{Simultaneity and Distances in General Relativity}
+
+In general relativity, reference frames change while going to different spacetime points. Suppose a light signal is directed from point B ($x^i + dx^i$ space coordinates) to point A ($x^i$), infinitely close to it, and then back over the same path. The spacetime interval is given by (separating the components to space and time parts):
+$$ds^2= -g_{ij}dx^idx^j-2g_{0i}dx^0dx^i-g_{00}(dx^0)^2$$
+
+The proper time in the \textbf{frame of the photon} will obviously be 0. Thus if we set $ds^2=0$ and solve for $dx^0$, we get two roots: 
+\begin{align*}
+    0&= -g_{00}(dx^0)^2 -2g_{0i}dx^0dx^i -g_{ij}dx^idx^j\\
+    dx^{0(1)} &= \frac{1}{-g_{00}}\qty{g_{0i}dx^i-\sqrt{(g_{0i}g_{0j}-g_{00}g_{ij})dx^idx^j}}\\
+    dx^{0(2)} &= \frac{1}{-g_{00}}\qty{g_{0i}dx^i+\sqrt{(g_{0i}g_{0j}-g_{00}g_{ij})dx^idx^j}}
+\end{align*}
+
+The two roots correspond to the propogation of the signal in the two directions between A and B. If the signal arrives at A at time $x^0$ then it left B at $x+dx^{0(1)}$ and will arrive back at B at time $x+dx^{0(2)}$. Obviously the time to go from B to A and back to B (as observed from B) is twice the distance between two points.
+
+In the special theory of relativity we define the element $dl$ of \emph{spatial distance} as the interval between two infinitesimally separated events occurring at one and the same time. In the general theory of relativity, it is usually impossible to do this, i.e. it is impossible to determine $dl$ by simply setting $dx^0=0$ in $ds$. This is related to the fact that in a gravitational field, the proper time at different points in space has a different dependence on the coordinate $x^0$.
+
+The time taken by light for the round trip is 
+$$dx^{0(2)}-dx^{0(1)}= \frac{2}{-g_{00}}\sqrt{(g_{0i}g_{0j}-g_{00}g_{ij})dx^idx^j}$$
+
+This was in the reference frame of the photon itself. The proper time for this \textbf{in frame B} is thus the above multiplied by $(\sqrt{-g_{00}})$ (\cref{eq2.1}). And the length element $dl$ is given by dividing the proper time by 2. Thus: 
+$$dl= \frac{\sqrt{-g_{00}}}{2}\cdot\frac{2}{-g_{00}}\sqrt{(g_{0i}g_{0j}-g_{00}g_{ij})dx^idx^j}$$    
+
+\begin{equation}
+    dl ^2= \qty(\frac{g_{0i}g_{0j}}{-g_{00}}+g_{ij})dx^idx^j \label{eq2.2}
+\end{equation}
+
+This is the expression that defines distance in terms of space coordinate elements.
+
+Simultaneity means synchronising clocks at different points in space. Such a synchronisation must be achieved by means of exhchange of light signals. The frame of the photon coincides with frame B at times $x^0+dx^{0(1)}$ and $x^0+dx^{0(2)}$. But at time $x^0$, its frame coincides with A. In the perspective of B, light reaches point A at a time halfway between the total time of travel, i.e., at the time $\frac{1}{2}\qty(\qty(x^0+dx^{0(1)})+\qty(x^0+dx^{0(2)}))$. At this point, frame A has time $x^0$. Since A and B are different frames, the time $x^0$ in the frame of B will be different, say $x^0+\Delta x^0$. The two events- the time at which light reaches A, and the halfway time in the frame of B, are simultaneous events in the frame of the light particle. In the frame of B alone however, these events are not simultaneous, and the difference in values of `time' ($\Delta x^0$) as seen in frame B is given by: 
+$$x_0+\Delta x^0= \frac{1}{2}\qty(\qty(x^0+dx^{0(1)})+\qty(x^0+dx^{0(2)}))$$
+\begin{equation}
+    \Delta x^0= \frac{g_{0i}}{-g_{00}}dx^i \label{eq2.3}
+\end{equation}
+
+This same difference in time is also observed by A for simultaneous events (in the event's frame) happening at point B. 
+
+\textbf{In in the special theory of relativity, proper time elapses differently for clocks moving relative to one another. In the  general theory of relativity, proper time elapses differently even at different points of space in the same reference system.}
+
+\section{For Particles}
+
+The particle's velocity is measured in terms of the proper time, using clocks synchronised along the trajectory of the particle. 
+
+If a particle departs from point A at time $x^0$ and arrives at an infinitesimally close point B at time $x^0+dx^0$ then the time interval as measured at B will not just be $x^0+dx^0-x^0$ since the events are at different frames with different proper times. The event $x^0$ in the frame of B is actually $x^0+\Delta x^0$, and thus the time interval will be (using \cref{eq2.3}): 
+\[(x^0+dx^0)- (x^0+\Delta x^0)= dx^0-\frac{g_{0i}}{-g_{00}}dx^i\]
+
+This is the time interval for the transit of the particle in B's reference frame. The proper time, in the particle's reference frame, will be given by multiplying by $\sqrt{-g_{00}}$, and the velocity will be given by dividing the length covered, i.e. $dx^i$ by this proper time. 
+$$v^i= \frac{dx^i}{\sqrt{-g_{00}}\qty(dx^0-\frac{g_{0i}}{-g_{00}}dx^i)}$$
+
+Since \[dl^2=dx^i dx_i= \qty(\frac{g_{0i}g_{0j}}{-g_{00}}+g_{ij})dx^idx^j\] and the free index is only present in the numerator of the velocity, 
+\begin{align}
+    v^2&= \frac{dl^2}{-g_{00}\qty(dx^0-\frac{g_{0i}}{-g_{00}}dx^i)^2}\nonumber\\[10pt]
+    dl^2&= {-g_{00}\qty(dx^0-\frac{g_{0i}}{-g_{00}}dx^i)^2}v^2 \label{eq2.4}
+\end{align}
+
+Thus, using \cref{eq2.2,eq2.4}:
+
+\begin{align*}
+    ds^2&= -g_{00}(dx^0)^2-2{g_{0i}}dx^0dx^i-g_{ij}dx^idx^j\\
+    ds^2&= -g_{00}\qty[(dx^0)^2-2\frac{g_{0i}}{-g_{00}}dx^0dx^i+\qty(\frac{g_{0i}}{-g_{00}})^2(dx^i)^2-\qty(\frac{g_{0i}}{-g_{00}})^2(dx^i)^2]-g_{ij}dx^idx^j\\
+    ds^2&= -g_{00}\qty[dx^0-\frac{g_{0i}}{-g_{00}}dx^i]^2-\frac{\qty(g_{0i})^2}{-g_{00}}(dx^i)^2-g_{ij}dx^idx^j\\
+\end{align*}
+\begin{align*}
+    ds^2&= -g_{00}\qty[dx^0-\frac{g_{0i}}{-g_{00}}dx^i]^2-\qty[\frac{g_{0i}g_{0j}}{-g_{00}}+g_{ij}]dx^idx^j\\
+    ds^2&= -g_{00}\qty[dx^0-\frac{g_{0i}}{-g_{00}}dx^i]^2-dl^2\\
+    ds^2&= -g_{00}\qty[dx^0-\frac{g_{0i}}{-g_{00}}dx^i]^2-\qty[{-g_{00}\qty(dx^0-\frac{g_{0i}}{-g_{00}}dx^i)^2}v^2]\\
+    ds^2&= -g_{00}\qty[dx^0-\frac{g_{0i}}{-g_{00}}dx^i]^2\qty(1-v^2)\\
+    ds&= \sqrt{-g_{00}}\qty[dx^0-\frac{g_{0i}}{-g_{00}}dx^i]\sqrt{1-v^2}
+\end{align*}
+
+The components of four velocity are $u^\alpha= \frac{dx^\alpha}{ds}$
+\begin{align*}
+    u^0&= \frac{dx^0}{\sqrt{-g_{00}}\qty[dx^0-\frac{g_{0i}}{-g_{00}}dx^i]\sqrt{1-v^2}}\\\\
+    u^0&= \frac{dx^0-\frac{g_{0i}}{-g_{00}}dx^i+\frac{g_{0i}}{-g_{00}}dx^i}{\sqrt{-g_{00}}\qty[dx^0-\frac{g_{0i}}{-g_{00}}dx^i]\sqrt{1-v^2}}\\\\
+    u^0&= \frac{1}{\sqrt{-g_{00}}\sqrt{1-v^2}}+\frac{g_{0i}}{-g_{00}}\frac{dx^i}{\sqrt{-g_{00}}\qty(dx^0-\frac{g_{0i}}{-g_{00}}dx^i)}\frac{1}{\sqrt{1-v^2}}\\\\
+    u^0&= \frac{1}{\sqrt{-g_{00}}\sqrt{1-v^2}}+\frac{\frac{g_{0i}}{-g_{00}}v^i}{\sqrt{1-v^2}}
+\end{align*}
+And,
+\begin{align*}
+    u^i&= \frac{dx^i}{\sqrt{-g_{00}}\qty[dx^0-\frac{g_{0i}}{-g_{00}}dx^i]\sqrt{1-v^2}}\\\\
+    u^i&= \frac{v^i}{\sqrt{1-v^2}}
+\end{align*}
+
+Energy is defined as the negative of the time component of the \emph{covariant} momentum four vector, $p_\mu= m u_\mu= mg_{\mu\nu}u^\nu$. $\mathscr{E}= -mg_{0\nu}u^\nu$. 
+\begin{align*}
+    \mathscr{E}&= -mg_{00}u^0- mg_{0i}u^i\\
+    \mathscr{E}&= -mg_{00}\qty[\frac{1}{\sqrt{-g_{00}}\sqrt{1-v^2}}+\frac{\frac{g_{0i}}{-g_{00}}v^i}{\sqrt{1-v^2}}]- mg_{0i}\frac{v^i}{\sqrt{1-v^2}}\\
+    \mathscr{E}&= m\qty[\frac{\sqrt{-g_{00}}}{\sqrt{1-v^2}}+\frac{{g_{0i}}v^i}{\sqrt{1-v^2}}]- mg_{0i}\frac{v^i}{\sqrt{1-v^2}}\\
+    \mathscr{E}&= \frac{m}{\sqrt{1-v^2}}\sqrt{-g_{00}}\\\\
+    \mathscr{E}&= E\sqrt{-g_{00}}
+\end{align*}
+
+This is the quantity which is conserved during the motion of the particle, rather than E itself.
+
+Thus, most generally, we find that the conserved quantity in a gravitational field is: 
+
+\begin{equation}
+    \tcboxmath{E\sqrt{-g_{00}}= \text{Constant}} \label{eq2.5}
+\end{equation}
+
+where E is the total energy, which is $=h\nu$ for a photon, and $=$ rest mass+ kinetic energy $=m/\sqrt{1-v^2}$ for a material particle.
+
+\chapter{Energy Transport}
+
+\emph{Using the [-,+,+,+] convention, $\eta^{\mu\nu}$, in units of h=G=c=1.}
+
+\emph{Reference: Thorne- The General-Relativistic Theory of Stellar Structure and Dynamics}
+
+\section{Redshift in Schwarzschild Coordinates}
+
+For the Schwarzschild metric, $ds^2= -\mathrm{e}^{2\Phi}\ dt^2+ \mathrm{e}^{2\Lambda}\ dr^2+r^2\ d\theta^2+r^2\sin^2\theta\ d\phi^2$, we see that the redshift is governed by the metric function $\Phi$, with $\sqrt{-g_{00}}= e^\Phi$. Thus, $$Ee^\Phi= \text{Constant}$$
+
+Essentially, all sorts of energies like heat energy (temperature) are scaled using $e^\Phi$. Similarly, from \cref{eq2.1} we get: $$\dd s= e^\Phi dt$$
+\section{Thermodynamic Quantities}
+
+\begin{enumerate}
+    \item Pressure $(p)$: Measured in a reference frame comoving with matter. We assume a perfect fluid. 
+    \item Number density of baryons $(n)$: Measured in a reference frame comoving with matter. 
+    \item Average rest mass of baryons $(\mu_B)$: Depends on the nuclear state of matter and changes in a nuclear reaction. 
+    \item Internal energy density of matter $(U)$: Includes all forms of energy except the rest mass energy of baryons.
+    \item Total mass-energy density $(\varepsilon)$: Measured in a reference frame comoving with matter. Is equivalent to rest mass energy + internal energy. 
+    \item Thermodynamic temperature $(T)$: Measured in a reference frame comoving with matter.
+    \item Entropy per baryon $(s)$: Measured in a reference frame comoving with matter. The total density of entropy is $ns= sN/V= S/V$. Thus the total entropy is $S= nsV= ns(N/n)= Ns$
+    \item Fractional nuclear abundance $(Z_k)$: Fraction of all baryons of type $k$. It must obviously satisfy $\sum_k Z_k= 1$ and $\sum_k \mu_k z_k= \mu_B$, where $\mu_k$ is the rest mass energy of baryon of type $k$. 
+    \item Chemical potentials $(\bar{\mu_k})$: Mass-energy released or absorbed due to the change in number of baryon type $k$ while keeping the total entropy and volume fixed. 
+    \item Radial luminosity $(L_r)$: Total mass energy carried by photons and neutrinos by conduction and convection outwards across a sphere of radius $r$, per unit time, as measured in the proper frame of an observer located at $r$ and at rest with respect to the star. 
+    \item Neutrino luminosity $(L_r^\nu)$: That portion of $L_r$ which is carried by neutrinos. 
+    \item Radiative absorption coefficient $(\chi_B)$: When multiplied by the energy density $\varepsilon$, it is the fractional attenuation of intensity of a beam of light in absence of gravity, per unit proper distance. That is- $\frac{\dd I}{dl}= -\chi_B\varepsilon I$, where $l$ is the proper distance. This is the same as the absorption coefficient in non relativistic radiative transfer theory, only here it is defined per unit energy density. 
+    \item Thermal conductivity $(\lambda_c)$: The proportionality constant which, in the the absence of gravitation, relates the energy flux by heat conduction to the temperature gradient. $Q= -\lambda_c\grad{T}$
+    \item Rate (proper time) of thermonuclear energy generation $(q)$: Rate at which rest mass-energy is converted to internal energy by thermonuclear reactions, as measured by an observer at rest in the star. $q= -\frac{\dd \mu_B}{\dd s}$
+    \item Rate of energy release into neutrinos $(q^\nu)$: Rate per baryon at which internal energy is converted into outgoing neutrinos.  
+\end{enumerate}
+
+\subsection{Effects of Special Relativity}
+
+Since we usually do thermodynamic analyses in reference frames comoving with matter, special relativistic effects need not be considered. However the equivalence of mass and energy creates a need for some scrutiny. If $N$ is the total number of baryons, then $n= N/V\Rightarrow V= N/n$. The second law of thermodynamics is a definition of entropy:
+$$T\dd S= \dd{Q}\Rightarrow T\dd(sN)= \dd Q$$
+The formula is same as in ordinary thermodynamics.
+
+The first law describes the rate of change of total mass-energy of the system when nuclear reactions may occur, colume may change and heat may be added, but the total number of baryons remains fixed. 
+\begin{align*}
+    \dd\qty({\varepsilon V})&= -p\dd{V}+T\dd{S}+ \mu_B \dd{N}\\
+    \dd\qty({\varepsilon\  \frac{N}{n}})&= -p\dd\qty(\frac{N}{n})+T\dd{sN}+ \sum_k\mu_k \dd{NZ_k}\\
+    \dd\qty({\frac{\varepsilon}{n}})&= -p\dd\qty(\frac{1}{n})+T\dd{s}+ \sum_k\mu_k \dd{Z_k}\\
+    \frac{\dd{\varepsilon}}{n}- \frac{\varepsilon}{n^2}\dd n&= \frac{p}{n^2}\dd n+T\dd{s}+ \sum_k\mu_k \dd{Z_k}
+\end{align*}
+\begin{equation}
+    \dd{\varepsilon}= \frac{p+\varepsilon}{n}\dd n+Tn\dd{s}+ \sum_k\mu_k n \dd{Z_k} \label{eq3.1}
+\end{equation}
+
+From which an important consequence is an equation relating changes in mass energy density to changes in baryon number density: 
+\begin{equation}
+    \qty(\pdv{\varepsilon}{n})_{s,Z_k}= \frac{p+\varepsilon}{n} \label{de/dn}
+\end{equation}
+
+In the non-relativistic limit, this relation was given by $\qty(\pdv{\varepsilon}{n})_{s}= \mu_B$.
+
+\end{document}
+
